@@ -43,9 +43,21 @@ cd FraudSentrix
 # Install dependencies and run...
 ```
 
+## 👥 Team Structure
+
+Our team of 6 members is working on the project using the following directory structure:
+
+- **[`main/`](./main/)** — Core project documentation and shared configurations.
+- **[`integration-satyam/`](./integration-satyam/)** — System integration, ML pipeline routing, and DevOps (Satyam).
+- **[`backend-shimant/`](./backend-shimant/)** — Backend services, databases, and APIs (Shimant).
+- **[`frontend-sittu/`](./frontend-sittu/)** — Frontend architecture and dashboard (Sittu).
+- **[`frontend-sakshi/`](./frontend-sakshi/)** — Frontend features and UI components (Sakshi).
+- **[`frontend-rashika/`](./frontend-rashika/)** — Frontend styling and UX logic (Rashika).
+- **[`android-saksham/`](./android-saksham/)** — Native Android app development (Saksham).
+
 ## 🤝 Contributing
 
 We welcome contributions! Feel free to open issues or submit pull requests. Let's build a safer digital environment together.
 
 ---
-*Built with ❤️ for a safer internet.*
+*Built with ❤️ for a safer internet by Team FraudSentrix.*
