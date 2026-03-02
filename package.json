@@ -1,0 +1,20 @@
+{
+  "name": "fraudsentrix",
+  "version": "1.0.0",
+  "description": "> Combatting Digital Arrest Scams with Real-Time Multimodal AI",
+  "homepage": "https://github.com/raghuvanshi-sec/FraudSentrix#readme",
+  "bugs": {
+    "url": "https://github.com/raghuvanshi-sec/FraudSentrix/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raghuvanshi-sec/FraudSentrix.git"
+  },
+  "license": "ISC",
+  "author": "CodeBlooded",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
