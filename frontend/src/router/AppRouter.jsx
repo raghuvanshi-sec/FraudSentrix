@@ -1,12 +1,23 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 import AuthLayout from "../layout/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
+import DashboardLayout from "../layout/DashboardLayout";
+import Dashboard from "../pages/Dashboard";
+import ScamDetection from "../pages/ScamDetection";
+import PhishingAnalyzer from "../pages/PhishingAnalyzer";
+import DomainChecker from "../pages/DomainChecker";
+import DocumentVerification from "../pages/DocumentVerification";
+
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Navigate to="/dashboard" replace />
+  },
+  {
+    path: "/auth",
     element: <AuthLayout />,
     children: [
       {
@@ -19,6 +30,32 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />
+      },
+      {
+        path: "scam-detection",
+        element: <ScamDetection />
+      },
+      {
+        path: "phishing-analyzer",
+        element: <PhishingAnalyzer />
+      },
+      {
+        path: "domain-checker",
+        element: <DomainChecker />
+      },
+      {
+        path: "document-verification",
+        element: <DocumentVerification />
+      }
+    ]
+  }
 ]);
 
 const AppRouter = () => {
