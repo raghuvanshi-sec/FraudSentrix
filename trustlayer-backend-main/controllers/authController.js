@@ -1,50 +1,71 @@
 const User = require("../models/User");
-const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 exports.register = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { firstName, lastName, organization, email, password } = req.body;
 
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ error: "User already exists" });
+        // Basic validation
+        if (!firstName || !lastName || !email || !password) {
+            return res.status(400).json({ error: "Please provide all required fields (firstName, lastName, email, password)." });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // Strong password regex (minimum 8 chars, at least one letter and one number)
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        if (!passwordRegex.test(password)) {
+            return res.status(400).json({ error: "Password must be at least 8 characters long and contain both letters and numbers." });
+        }
 
+        const existingUser = await User.findOne({ email: email.toLowerCase() });
+        if (existingUser) {
+            return res.status(400).json({ error: "User already exists with this email." });
+        }
+
+        // Hashing is handled by the pre('save') hook in the User model!
         const user = await User.create({
+            firstName,
+            lastName,
+            organization,
             email,
-            password: hashedPassword
+            password
         });
 
         const userObj = user.toObject();
         delete userObj.password;
         delete userObj.__v;
 
-        res.json({
+        res.status(201).json({
             success: true,
-            message: "User registered",
+            message: "User registered successfully",
             user: userObj
         });
 
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Registration Error:", err);
+        res.status(500).json({ error: "An error occurred during registration.", stack: err.stack, msg: err.message });
     }
 };
-const jwt = require("jsonwebtoken");
 
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // check user exists
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(400).json({ error: "User not found" });
+        if (!email || !password) {
+            return res.status(400).json({ error: "Please provide both email and password." });
         }
 
-        // compare password
-        const isMatch = await bcrypt.compare(password, user.password);
+        // check user exists
+        const user = await User.findOne({ email: email.toLowerCase() });
+        if (!user) {
+            return res.status(400).json({ error: "Invalid credentials" });
+        }
+
+        if (!user.isActive) {
+            return res.status(403).json({ error: "This account has been deactivated." });
+        }
+
+        // compare password using the model method we created
+        const isMatch = await user.comparePassword(password);
         if (!isMatch) {
             return res.status(400).json({ error: "Invalid credentials" });
         }
@@ -56,7 +77,7 @@ exports.login = async (req, res) => {
             { expiresIn: "1d" }
         );
 
-        // remove password
+        // remove password before returning to frontend
         const userObj = user.toObject();
         delete userObj.password;
         delete userObj.__v;
@@ -69,6 +90,7 @@ exports.login = async (req, res) => {
         });
 
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("Login Error:", err);
+        res.status(500).json({ error: "An error occurred during login." });
     }
 };
