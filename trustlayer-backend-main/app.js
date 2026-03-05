@@ -2,23 +2,26 @@ const express = require("express");
 const cors = require("cors");
 const crypto = require("crypto");
 const mongoose = require("mongoose");
+require("dotenv").config();
+
+const authRoutes = require("./routes/authRoutes");
+const scanRoutes = require("./routes/scanRoutes");
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
+
+app.use("/api/auth", authRoutes);
+app.use("/api/scan", scanRoutes);
+
 
 /* =========================
    MONGODB CONNECTION
 ========================= */
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/fraudsentrix   ";
-mongoose.connect(MONGODB_URI)
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB Connected ✅"))
     .catch(err => console.log(err));
-
-/* =========================
-   SCHEMA + MODEL
-========================= */
-const Scan = require("./models/Scan");
 
 /* =========================
    ROOT ROUTE
@@ -33,11 +36,6 @@ app.get("/", (req, res) => {
 app.post("/analyze", async (req, res) => {
     try {
         const { text = "", domain = "" } = req.body;
-
-        // ✅ STEP 0: Input Validation
-        if (typeof text !== "string" || typeof domain !== "string") {
-            return res.status(400).json({ error: "Invalid input types. Both text and domain must be strings." });
-        }
 
         let risk = 0;
 
@@ -74,10 +72,10 @@ app.post("/analyze", async (req, res) => {
         if (risk > 70) level = "HIGH";
         else if (risk > 40) level = "MEDIUM";
 
-        // ✅ STEP 4: SHA-256 Hash (with delimiter to prevent collisions)
+        // ✅ STEP 4: SHA-256 Hash
         const hash = crypto
             .createHash("sha256")
-            .update(text + "|" + domain)
+            .update(text + domain)
             .digest("hex");
 
         // ✅ STEP 5: Duplicate Detection
@@ -149,7 +147,6 @@ app.get("/stats", async (req, res) => {
 /* =========================
    START SERVER
 ========================= */
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT} 🚀`);
+app.listen(3000, () => {
+    console.log("Server running on port 3000 🚀");
 });
