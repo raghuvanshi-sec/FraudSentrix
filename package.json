@@ -16,8 +16,13 @@
   "main": "index.js",
   "scripts": {
     "install:all": "npm install --prefix frontend && npm install --prefix trustlayer-backend-main",
+    "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\"",
     "dev:frontend": "npm run dev --prefix frontend",
     "dev:backend": "npm run dev --prefix trustlayer-backend-main",
-    "start": "node trustlayer-backend-main/app.js"
+    "start": "node trustlayer-backend-main/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }
