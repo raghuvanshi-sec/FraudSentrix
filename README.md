@@ -1,51 +1,114 @@
-# 🛡️ FraudSentrix | TrustShield AI
+# 🛡️ FraudSentrix | TrustLayer Lite X
 
-> Combatting Digital Arrest Scams with Real-Time Multimodal AI
+> **Combatting Digital Arrest Scams & Cyber Threats with Advanced Analytics**
 
-![Hackathon](https://img.shields.io/badge/Hackathon-Project-blue)
-![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
-![AI](https://img.shields.io/badge/AI-Powered-orange)
+![React Focus](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue)
+![Backend](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-green)
+![Status](https://img.shields.io/badge/Status-Active%20Development-yellow)
+
+**TrustLayer Lite X** is a modern, premium cybersecurity dashboard and API backend designed to protect users from sophisticated digital threats, specifically targeting "digital arrest" impersonation scams, phishing attempts, domain spoofing, and document tampering.
+
+It provides an enterprise-grade "Cyber Command Center" UI backed by a robust Node.js reporting structure.
 
 ---
 
-## 🚨 The Problem: Digital Arrest & Deepfake Scams
+## ⚡ Quick Start
 
-As AI technology becomes more accessible, organized cybercriminals are increasingly using **deepfakes, voice cloning, and psychological manipulation** to execute "digital arrest" scams. Victims are coerced into believing they are under investigation by law enforcement, leading to devastating financial and emotional damage.
+### Prerequisites
 
-## 💡 The Solution: TrustShield AI
+- [Node.js](https://nodejs.org/) (v18+)
+- [MongoDB](https://www.mongodb.com/) (running locally or via Atlas)
 
-**TrustShield AI** (by FraudSentrix) is an intelligent, real-time fraud prevention system that acts as a digital guardian. By continuously analyzing communication streams—voice, video, and behavior—it detects impersonation attempts and psychological manipulation *before* it's too late.
-
-### ✨ Key Features
-
-- 🎙️ **Voice & Audio Analysis**: Real-time detection of synthetic voices, cloned audio, and deepfake artifacts.
-- 👁️ **Video Liveness & Deepfake Detection**: Scans video feeds for inconsistencies, unnatural pixel clustering, and AI face-swapping traces.
-- 🧠 **Behavioral & Contextual Analysis**: Monitors the context of the conversation for high-stress triggers, urgency cues, and manipulation tactics often used in digital arrest scams.
-- 📊 **Dynamic Trust Score**: Computes a continuous, real-time trust score for the ongoing interaction, providing a clear visual indicator of risk.
-- ⚡ **Instant Preemptive Alerts**: Proactively warns the user with actionable alerts the moment the system detects a high probability of a scam or impersonation attempt.
-
-## 🏗️ Architecture & How It Works
-
-- (Project currently in active development)*
-
-1. **Ingestion & Interception**: Securely monitors real-time communication channels (audio/video streams).
-2. **Analysis Pipeline**: Routes the streams through our custom AI models for multi-modal analysis.
-3. **Scoring & Intervention**: Aggregates signals into a unified threat model to trigger immediate user-facing warnings.
-
-## 🚀 Getting Started
-
-Instructions for running TrustShield AI locally will be added here once the MVP is finalized.
+### 1. Clone & Install
 
 ```bash
-# General placeholder for future setup
-git clone https://github.com/your-username/FraudSentrix.git
+git clone https://github.com/raghuvanshi-sec/FraudSentrix.git
 cd FraudSentrix
-# Install dependencies and run...
+
+# Install dependencies for both Frontend and Backend automatically
+npm run install:all
 ```
+
+### 2. Environment Variables
+
+Create a `.env` file in the `trustlayer-backend-main` directory:
+
+```env
+PORT=3000
+MONGO_URI=mongodb://127.0.0.1:27017/trustlayer
+JWT_SECRET=your_super_secret_64_character_hex_string
+```
+
+### 3. Run the Development Servers
+
+From the root `FraudSentrix` folder, start both the React frontend and Node backend simultaneously:
+
+```bash
+npm run dev
+```
+
+- **Frontend:** `http://localhost:5173`
+- **Backend:** `http://localhost:3000`
+
+---
+
+## ✨ Core Features & Modules
+
+### 1. The Cyber Dashboard (Frontend)
+
+A highly professional, dark-themed React SPA using Tailwind CSS v4.
+
+- **Tech-Noir Aesthetics:** Glassmorphism, dynamic scanner animations, and clear Gestalt principles.
+- **Risk Color Coding:** Green (Safe), Yellow (Suspicious), Red (High Risk).
+- **Top Navigation:** Sleek, responsive navigation bar.
+
+### 2. Threat Analysis Suites
+
+- 🎙️ **Scam Detection (Digital Arrest):** Analyzes conversational text transcripts for coercion, urgency cues, and impersonation scripts. Returns a calculated Risk Score and flags specific threat vectors.
+- 🎣 **Phishing Analyzer:** Evaluates email or message bodies for malicious intent and tracking links.
+- 🌐 **Domain Checker:** Analyzes domain reputation, identifies typosquatting, and checks TLS certificate validity.
+- 📄 **Document Verification:** Generates cryptographic SHA-256 hashes of uploaded files to detect tampering against known safe registries.
+
+### 3. Secure Backend API
+
+- 🔒 **Production-Ready Schema:** User models enforce `firstName`, `lastName`, and strict password policies.
+- 🛡️ **Data Layer Security:** Password hashing (bcrypt) is securely decoupled into Mongoose `pre('save')` hooks rather than living in the controller routes.
+- 🔑 **JWT Authentication:** Stateful token generation with role-based infrastructure.
+
+---
+
+## 🏗️ Tech Stack
+
+**Frontend:**
+
+- React.js 19 (Vite)
+- Tailwind CSS v4 (Custom Dark Theme Tokens)
+- React Router v7
+- Axios for API communication
+
+**Backend:**
+
+- Node.js & Express.js 5
+- MongoDB & Mongoose
+- JSON Web Tokens (JWT) & bcryptjs
+
+---
+
+## 📡 API Reference (Core)
+
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/auth/register` | Register a new user (`firstName`, `lastName`, `email`, `password`) |
+| `POST` | `/api/auth/login` | Authenticate user and receive a JWT token |
+| `POST` | `/api/scan/analyze` | Submit a text transcript for Scam/Digital Arrest threat modeling |
+
+---
 
 ## 🤝 Contributing
 
-We welcome contributions! Feel free to open issues or submit pull requests. Let's build a safer digital environment together.
+TrustLayer Lite X is built for security. We welcome contributions, especially regarding heuristic AI model improvements for the text analysis engine.
 
----
-*Built with ❤️ for a safer internet by Team FraudSentrix.*
+- Ensure all code conforms to the clean-code standards outlined in the repository.
+- Submit pull requests to the `integration` branch.
+
+*Built with ❤️ for a safer internet by Team CodeBlooded.*
