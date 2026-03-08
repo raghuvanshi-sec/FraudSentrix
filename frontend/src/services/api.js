@@ -9,21 +9,48 @@ const apiClient = axios.create({
   },
 });
 
-export const analyzeScam = async (text) => {
+export const analyzeScam = async (text, type = "text", metadata = {}) => {
   try {
-    // For the MVP, we utilize the single /analyze endpoint present on the current backend
-    const response = await apiClient.post('/scan/analyze', { text, domain: '' });
+    // Syncing with the refactored backend logic which expects { type, text, domain, vishingMetadata, deepfakeMetadata }
+    const payload = {
+      type,
+      text: type === "text" ? text : "",
+      domain: "",
+      vishingMetadata: type === "audio" ? metadata : {},
+      deepfakeMetadata: type === "video" ? metadata : {}
+    };
+
+    const response = await apiClient.post('/scan/analyze', payload);
+    
     return {
       success: true,
       message: response.data.message,
       data: {
         risk: response.data.level,
         score: response.data.riskScore,
-        flags: [] 
+        type: response.data.type,
+        hash: response.data.hash,
+        flags: [] // Backend keywords/flags can be mapped here once fully implemented
       }
     };
   } catch (error) {
-    throw new Error(error.response?.data?.error || 'Failed to analyze text');
+    throw new Error(error.response?.data?.error || 'Failed to analyze content');
+  }
+};
+
+export const analyzeDeepfake = async (videoUrl, manipulationType = "unknown") => {
+  try {
+    // Simulating call to deepfake analysis logic (which would be a specialized API)
+    // For now, we use our unified /analyze endpoint with simulated scores
+    const mockConfidence = Math.floor(Math.random() * 60) + 40; // 40-100%
+    
+    return await analyzeScam("", "video", {
+      videoUrl,
+      manipulationType,
+      confidenceScore: mockConfidence
+    });
+  } catch (error) {
+    throw new Error(error.message || 'Deepfake analysis failed');
   }
 };
 

@@ -7,6 +7,8 @@ import Register from "../pages/Register";
 import DashboardLayout from "../layout/DashboardLayout";
 import Dashboard from "../pages/Dashboard";
 import ScamDetection from "../pages/ScamDetection";
+import VishingDetection from "../pages/VishingDetection";
+import DeepfakeDetector from "../pages/DeepfakeDetector";
 import PhishingAnalyzer from "../pages/PhishingAnalyzer";
 import DomainChecker from "../pages/DomainChecker";
 import DocumentVerification from "../pages/DocumentVerification";
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
       {
         path: "scam-detection",
         element: <ScamDetection />
+      },
+      {
+        path: "vishing-detection",
+        element: <VishingDetection />
+      },
+      {
+        path: "deepfake-detector",
+        element: <DeepfakeDetector />
       },
       {
         path: "phishing-analyzer",

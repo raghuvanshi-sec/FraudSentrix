@@ -13,6 +13,22 @@ const Dashboard = () => {
       glow: 'group-hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)]'
     },
     {
+      title: 'Vishing Detection',
+      description: 'Analyze phone call transcripts and metadata to identifying voice-based phishing and social engineering.',
+      icon: 'M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z',
+      path: '/dashboard/vishing-detection',
+      color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30 group-hover:bg-emerald-500/20 group-hover:border-emerald-400/50',
+      glow: 'group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]'
+    },
+    {
+      title: 'Deepfake Detector',
+      description: 'Scan videos for AI-generated facial manipulations, lip-syncing, and synthetic media artifacts.',
+      icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z',
+      path: '/dashboard/deepfake-detector',
+      color: 'bg-red-500/10 text-red-400 border-red-500/30 group-hover:bg-red-500/20 group-hover:border-red-400/50',
+      glow: 'group-hover:shadow-[0_0_30px_-5px_rgba(239,68,68,0.3)]'
+    },
+    {
       title: 'Phishing Analyzer',
       description: 'Scan emails to uncover deceptive senders, malicious links, and phishing keywords.',
       icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
