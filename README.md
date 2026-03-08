@@ -1,4 +1,4 @@
-# 🛡️ FraudSentrix | TrustShield AI
+# 🛡️ TrinetraAI
 
 > Combatting Digital Arrest Scams with Real-Time Multimodal AI
 
@@ -38,7 +38,7 @@ Instructions for running TrustShield AI locally will be added here once the MVP 
 
 ```bash
 # General placeholder for future setup
-git clone https://github.com/your-username/FraudSentrix.git
+git clone https://github.com/your-username/TrinetraAI.git
 cd FraudSentrix
 # Install dependencies and run...
 ```
