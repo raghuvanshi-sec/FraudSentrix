@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Header from '../components/TrustLayer/Main/Header';
 import { 
   ShieldAlert, 
   Search, 
@@ -27,32 +28,7 @@ export default function Landing() {
         <div className="absolute inset-0 bg-[radial-gradient(#1b2636_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
       </div>
 
-      {/* Sticky Modular Navbar */}
-      <nav className="sticky top-0 z-[100] bg-[#070b14]/80 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 bg-gradient-to-br from-[#22d3ee] to-[#0891b2] rounded-lg flex items-center justify-center shadow-lg shadow-[#22d3ee]/20">
-              <ShieldAlert size={20} className="text-white" />
-            </div>
-            <span className="font-syne font-bold text-xl tracking-tight text-white italic">TrustLayer-X</span>
-          </div>
-
-          <div className="hidden md:flex items-center gap-10">
-            {['Features', 'How it Works', 'Team'].map((item) => (
-              <button key={item} className="text-sm font-semibold text-slate-400 hover:text-white transition-colors">
-                {item}
-              </button>
-            ))}
-          </div>
-
-          <Link 
-            to="/dashboard" 
-            className="bg-[#10b981] hover:bg-[#059669] text-white px-6 py-2.5 rounded-md font-bold text-sm transition-all shadow-lg shadow-[#10b981]/20 hover:scale-[1.02] active:scale-[0.98]"
-          >
-            Launch Dashboard
-          </Link>
-        </div>
-      </nav>
+      <Header />
 
       {/* Hero Section */}
       <header className="relative z-10 pt-20 pb-32 max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
