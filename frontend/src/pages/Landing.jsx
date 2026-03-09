@@ -214,7 +214,7 @@ export default function Landing() {
       <section className="relative z-10 py-32 max-w-7xl mx-auto px-6 text-center">
         <div className="relative p-16 overflow-hidden rounded-[2.5rem]">
            <div className="absolute inset-0 bg-gradient-to-br from-[#131d2b] to-[#070b14] -z-10 border border-white/5"></div>
-           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_transparent_0%,_#070b14_100%)] opacity-20"></div>
+           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_transparent_0%,_#070b14_100%)] opacity-20 pointer-events-none"></div>
            
            <h2 className="text-4xl md:text-6xl font-syne font-bold text-white mb-8">Get Started with TrustLayer-X</h2>
            <p className="text-slate-400 text-lg mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
