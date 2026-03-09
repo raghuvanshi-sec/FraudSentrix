@@ -34,8 +34,8 @@ TrustLayer-X follows a modular, three-tier architecture:
 Clone the repository and install all dependencies using the root orchestrator:
 
 ```bash
-git clone https://github.com/raghuvanshi-sec/FraudSentrix.git
-cd FraudSentrix
+git clone https://github.com/raghuvanshi-sec/TrinetraAI.git
+cd TrinetraAI
 npm run install:all
 ```
 
