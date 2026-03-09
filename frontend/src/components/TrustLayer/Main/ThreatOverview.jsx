@@ -24,11 +24,11 @@ export default function ThreatOverview() {
   }, []);
 
   const stats = [
-    { title: 'Total Scans', value: statsData.totalScans.toString(), icon: Activity, colorClass: 'text-[#22d3ee]' },
+    { title: 'Total Scans', value: statsData.totalScans.toString(), icon: Activity, colorClass: 'text-slate-400' },
     { title: 'High Risk Alerts', value: statsData.highRiskScans.toString(), icon: AlertTriangle, colorClass: 'text-[#ff2a2a]' },
-    { title: 'Text Analysis', value: statsData.textScans.toString(), icon: FileText, colorClass: 'text-orange-500' },
-    { title: 'Audio Scans', value: statsData.audioScans.toString(), icon: Mic, colorClass: 'text-[#fde047]' },
-    { title: 'Video Scans', value: statsData.videoScans.toString(), icon: Video, colorClass: 'text-[#10b981]' },
+    { title: 'Text Analysis', value: statsData.textScans.toString(), icon: FileText, colorClass: 'text-[#22d3ee]' },
+    { title: 'Audio Scans', value: statsData.audioScans.toString(), icon: Mic, colorClass: 'text-[#10b981]' },
+    { title: 'Video Scans', value: statsData.videoScans.toString(), icon: Video, colorClass: 'text-[#ff2a2a]' },
   ];
 
   return (

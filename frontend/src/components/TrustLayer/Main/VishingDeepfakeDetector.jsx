@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mic, ShieldAlert, Cpu, Activity, Play, Volume2, Fingerprint } from 'lucide-react';
+import { Mic, ShieldAlert, Cpu, Activity, Play, Volume2, Fingerprint, Video } from 'lucide-react';
 import Badge from '../Shared/Badge';
 import { analyzeScam } from '../../../services/api';
 
@@ -9,6 +9,12 @@ export default function VishingDeepfakeDetector() {
   const [activeTab, setActiveTab] = useState('vishing'); // 'vishing' or 'deepfake'
   const [inputText, setInputText] = useState('');
   const [error, setError] = useState(null);
+
+  const themeColor = activeTab === 'vishing' ? '#10b981' : '#ff2a2a';
+  const themeBg = activeTab === 'vishing' ? 'bg-[#10b981]/10' : 'bg-[#ff2a2a]/10';
+  const themeBorder = activeTab === 'vishing' ? 'border-[#10b981]/30' : 'border-[#ff2a2a]/30';
+  const themeText = activeTab === 'vishing' ? 'text-[#10b981]' : 'text-[#ff2a2a]';
+  const themeFocus = activeTab === 'vishing' ? 'focus:border-[#10b981]' : 'focus:border-[#ff2a2a]';
 
   const handleAnalyze = async () => {
     if (!inputText.trim() && activeTab === 'vishing') return;
@@ -39,158 +45,188 @@ export default function VishingDeepfakeDetector() {
     }
   };
 
+  const getScoreColor = (score) => {
+    if (score > 70) return 'text-[#ff2a2a]';
+    if (score > 40) return activeTab === 'vishing' ? 'text-[#10b981]' : 'text-orange-500';
+    return 'text-[#22d3ee]';
+  };
+
   return (
-    <div className="animate-fadeSlideUp space-y-6">
+    <div className="animate-fade-slide-up space-y-8">
       {/* Header Info */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <h2 className="font-syne font-bold text-2xl text-white flex items-center gap-3">
-            <Mic className="text-[#ff2a2a]" />
-            Audio Threat <span className="text-slate-500">Analysis</span>
-          </h2>
-          <p className="text-slate-400 text-sm mt-1">Advanced detection for Vishing (Voice Phishing) and AI Voice Deepfakes.</p>
+          <div className="flex items-center gap-4">
+             <div className={`p-2 bg-[#0d1520] border border-[#1b2636] ${themeText}`}>
+                {activeTab === 'vishing' ? <Mic size={24} /> : <Video size={24} />}
+             </div>
+             <div>
+                <h2 className="font-syne font-bold text-3xl text-white uppercase tracking-tight">
+                  {activeTab === 'vishing' ? 'Audio Threat' : 'Video Threat'} <span className="text-slate-600">Analysis</span>
+                </h2>
+                <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] mt-1">
+                  {activeTab === 'vishing' ? 'Vishing & AI Voice Deepfake Detection' : 'Advanced Neural Video Manipulation Scan'}
+                </p>
+             </div>
+          </div>
         </div>
-        <div className="flex bg-[#131d2b] border border-[#1b2636] p-1 h-11">
+        <div className="flex bg-[#131d2b] border border-[#1b2636] p-1 h-12">
           <button 
-            onClick={() => { setActiveTab('vishing'); setResult(null); }}
-            className={`px-4 text-xs font-bold transition-all ${activeTab === 'vishing' ? 'bg-[#ff2a2a] text-white' : 'text-slate-400 hover:text-slate-200'}`}
+            onClick={() => { setActiveTab('vishing'); setResult(null); setError(null); }}
+            className={`px-8 text-xs font-bold transition-all tracking-widest ${activeTab === 'vishing' ? 'bg-[#10b981] text-white shadow-[0_0_20px_rgba(16,185,129,0.2)]' : 'text-slate-500 hover:text-slate-300'}`}
           >
             VISHING
           </button>
           <button 
-            onClick={() => { setActiveTab('deepfake'); setResult(null); }}
-            className={`px-4 text-xs font-bold transition-all ${activeTab === 'deepfake' ? 'bg-[#ff2a2a] text-white' : 'text-slate-400 hover:text-slate-200'}`}
+            onClick={() => { setActiveTab('deepfake'); setResult(null); setError(null); }}
+            className={`px-8 text-xs font-bold transition-all tracking-widest ${activeTab === 'deepfake' ? 'bg-[#ff2a2a] text-white shadow-[0_0_20px_rgba(255,42,42,0.2)]' : 'text-slate-500 hover:text-slate-300'}`}
           >
             DEEPFAKE
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Input area */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="bg-[#131d2b] border border-[#1b2636] p-6 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-4 opacity-10">
-              {activeTab === 'vishing' ? <ShieldAlert size={80} /> : <Cpu size={80} />}
+      <section className={`bg-[#131d2b] border border-[#1b2636] flex flex-col md:flex-row min-h-[450px] relative overflow-hidden ${themeBg}`}>
+        <div className="absolute top-0 left-0 w-[4px] h-full transition-colors duration-500" style={{ backgroundColor: themeColor }} />
+        
+        {/* Input Area */}
+        <div className="flex-1 p-8 flex flex-col justify-between border-b md:border-b-0 md:border-r border-[#1b2636]">
+          <div className="relative group flex-1 flex flex-col">
+            <div className="absolute top-0 right-0 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
+              {activeTab === 'vishing' ? <ShieldAlert size={120} /> : <Cpu size={120} />}
             </div>
             
-            <label className="block text-[10px] font-bold text-[#ff2a2a] uppercase tracking-widest mb-4">
-              {activeTab === 'vishing' ? 'Voice Call Transcript / Audio' : 'Audio File For Analysis'}
+            <label className={`block text-[10px] font-bold uppercase tracking-widest mb-4 transition-colors duration-500`} style={{ color: themeColor }}>
+              {activeTab === 'vishing' ? 'Neural Voice Transcript' : 'Source Video Feed / URI'}
             </label>
             
-            <div className="relative">
+            <div className="relative flex-1 flex flex-col">
               <textarea 
-                placeholder={activeTab === 'vishing' ? "Paste call transcript here or upload audio log..." : "Upload audio file for synthetic voice detection..."}
+                placeholder={activeTab === 'vishing' ? "Paste call transcript or suspicious audio log..." : "Enter video URL or paste frame sequence hash..."}
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                className="w-full bg-[#0d1520] border border-[#1b2636] p-4 text-sm text-slate-300 focus:outline-none focus:border-[#ff2a2a] min-h-[180px] transition-colors resize-none"
+                className={`w-full flex-1 bg-[#0d1520] border border-[#1b2636] p-5 text-sm text-slate-300 focus:outline-none transition-colors resize-none leading-relaxed placeholder:text-slate-700 ${themeFocus}`}
               />
               <div className="absolute bottom-4 right-4 flex gap-2">
-                <button className="p-2 bg-[#1b2636] text-slate-300 hover:bg-[#253244] transition-colors">
+                <button className="p-2.5 bg-[#1b2636] text-slate-400 hover:bg-[#253244] hover:text-white transition-all border border-transparent hover:border-slate-500">
                   <Play size={16} />
                 </button>
-                <button className="p-2 bg-[#1b2636] text-slate-300 hover:bg-[#253244] transition-colors">
+                <button className="p-2.5 bg-[#1b2636] text-slate-400 hover:bg-[#253244] hover:text-white transition-all border border-transparent hover:border-slate-500">
                   <Volume2 size={16} />
                 </button>
               </div>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-6">
+            {/* Waveform / Visual Feed */}
+            <div className="bg-[#0d1520] border border-[#1b2636] p-4">
+               <div className="flex items-center justify-between mb-3 text-[10px] font-bold text-slate-600 uppercase tracking-widest">
+                 <span>Spectral Analysis Feed</span>
+                 <span className="flex gap-1">
+                   {[1,2,3].map(i => <div key={i} className="w-1 h-3" style={{ backgroundColor: `${themeColor}40` }} />)}
+                 </span>
+               </div>
+               <div className="h-12 flex items-center gap-1">
+                 {Array.from({length: 48}).map((_, i) => (
+                   <div 
+                     key={i} 
+                     className="flex-1 rounded-none transition-all duration-500"
+                     style={{ 
+                       height: `${analyzing ? 20 + Math.random() * 80 : 10 + Math.random() * 15}%`,
+                       backgroundColor: themeColor,
+                       opacity: analyzing ? 0.6 : 0.15
+                     }}
+                   />
+                 ))}
+               </div>
             </div>
 
             <button 
               onClick={handleAnalyze}
               disabled={analyzing}
-              className="mt-6 w-full py-4 bg-[#ff2a2a] text-white font-syne font-bold text-sm tracking-widest hover:bg-[#e62020] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 group"
+              className={`w-full py-5 font-syne font-bold text-sm tracking-[0.2em] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-4 group text-white`}
+              style={{ backgroundColor: themeColor }}
             >
               {analyzing ? (
                 <>
-                  <Activity size={18} className="animate-pulse" />
-                  ANALYZING FREQUENCIES...
+                  <Activity size={20} className="animate-pulse" />
+                  ISOLATING FREQUENCIES...
                 </>
               ) : (
                 <>
-                  <Fingerprint size={18} className="group-hover:scale-110 transition-transform" />
-                  RUN SECURITY SCAN
+                  <Fingerprint size={20} className="group-hover:scale-110 transition-transform" />
+                  INITIATE NEURAL SCAN
                 </>
               )}
             </button>
-            {error && (
-              <div className="mt-4 p-4 bg-[#ff2a2a]/10 border border-[#ff2a2a]/30 text-[#ff2a2a] text-xs animate-in fade-in duration-300">
-                {error}
-              </div>
-            )}
           </div>
 
-          {/* Dummy Waveform */}
-          <div className="bg-[#131d2b] border border-[#1b2636] p-6">
-             <div className="flex items-center justify-between mb-4">
-               <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Live Spectral Feed</span>
-               <div className="flex gap-1">
-                 {[1,2,3,4,5].map(i => <div key={i} className="w-1 h-3 bg-[#ff2a2a]/30" />)}
-               </div>
-             </div>
-             <div className="h-16 flex items-center gap-1">
-               {Array.from({length: 40}).map((_, i) => (
-                 <div 
-                   key={i} 
-                   className={`flex-1 bg-gradient-to-t from-[#ff2a2a]/20 to-[#ff2a2a]/60 rounded-full transition-all duration-500`}
-                   style={{ height: `${analyzing ? Math.random() * 100 : 20 + Math.random() * 20}%` }}
-                 />
-               ))}
-             </div>
-          </div>
+          {error && (
+            <div className="mt-4 p-4 bg-[#ff2a2a]/10 border border-[#ff2a2a]/30 text-[#ff2a2a] text-[11px] font-bold uppercase tracking-wider flex items-center gap-3">
+              <AlertCircle size={14} />
+              {error}
+            </div>
+          )}
         </div>
 
         {/* Results Panel */}
-        <div className="lg:col-span-1">
+        <div className="w-full md:w-[360px] bg-[#0d1520]/50 p-8 flex flex-col justify-center border-t md:border-t-0 md:border-l border-[#1b2636]">
           {result ? (
-            <div className="bg-[#131d2b] border border-[#ff2a2a]/30 h-full flex flex-col animate-fadeSlideUp">
-              <div className="p-6 border-b border-[#1b2636] bg-[#ff2a2a]/5">
-                <Badge type={result.status} text={result.status} />
-                <div className="mt-4 flex items-baseline gap-2">
-                  <span className="text-5xl font-syne font-bold text-white">{result.score}</span>
-                  <span className="text-slate-500 text-sm font-bold uppercase tracking-widest">THREAT INDEX</span>
-                </div>
+            <div className="animate-fade-slide-up space-y-10">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] uppercase text-slate-500 font-bold tracking-widest">Neural Status</span>
+                <Badge level={result.status} />
               </div>
 
-              <div className="p-6 space-y-6 flex-1">
+              <div className="text-center py-8 border-y border-[#1b2636]/50">
+                <div className="flex items-end justify-center gap-1">
+                  <span className={`text-8xl font-syne font-bold leading-none ${getScoreColor(result.score)}`}>
+                    {result.score}
+                  </span>
+                  <span className="text-slate-600 text-sm font-bold mb-3 uppercase tracking-tighter">/ 100</span>
+                </div>
+                <p className="text-[10px] uppercase text-slate-500 font-bold tracking-[0.4em] mt-6">Threat Index</p>
+              </div>
+
+              <div className="space-y-6 flex-1">
                 <div>
-                  <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Detected Anomalies</h4>
+                  <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Detected Anomalies</h4>
                   <ul className="space-y-3">
                     {result.threats.map((threat, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-xs text-slate-300">
-                        <ShieldAlert size={14} className="text-[#ff2a2a] shrink-0 mt-0.5" />
-                        {threat}
+                      <li key={idx} className={`flex items-start gap-4 p-3 bg-[#131d2b] border border-[#1b2636] transition-colors hover:border-slate-700`}>
+                        <ShieldAlert size={14} className="shrink-0 mt-0.5" style={{ color: themeColor }} />
+                        <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">{threat}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="p-4 bg-[#0d1520] border-l-2 border-[#ff2a2a]">
-                   <h4 className="text-[10px] font-bold text-[#ff2a2a] uppercase tracking-widest mb-2">Technical Insight</h4>
-                   <p className="text-xs text-slate-400 italic leading-relaxed">
-                     {activeTab === 'vishing' ? result.transcript : result.analysis}
+                <div className={`p-5 bg-[#0d1520] border-l-2 ${themeBorder}`}>
+                   <h4 className="text-[10px] font-bold uppercase tracking-widest mb-3" style={{ color: themeColor }}>Technical Audit</h4>
+                   <p className="text-[11px] text-slate-500 italic leading-relaxed font-medium">
+                     "{activeTab === 'vishing' ? result.transcript : result.analysis}"
                    </p>
                 </div>
               </div>
 
-              <div className="p-6 pt-0">
-                <button className="w-full py-3 border border-[#1b2636] text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:bg-[#1b2636] hover:text-white transition-all">
-                  Generate Forensic Report
-                </button>
-              </div>
+              <button className={`w-full py-4 border border-[#1b2636] text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] hover:bg-[#1b2636] hover:${themeText} transition-all border-dashed`}>
+                Generate Forensic Audit
+              </button>
             </div>
           ) : (
-            <div className="bg-[#131d2b] border border-[#1b2636] h-full flex flex-col items-center justify-center p-8 text-center border-dashed">
-              <div className="w-16 h-16 rounded-full bg-[#1b2636] flex items-center justify-center mb-4">
-                <Activity className="text-slate-500" />
+            <div className="flex flex-col items-center justify-center p-8 text-center h-full">
+              <div className="w-20 h-20 rounded-full bg-[#1b2636] flex items-center justify-center mb-6">
+                <Activity size={32} className="text-slate-600 animate-pulse" />
               </div>
-              <h4 className="font-syne font-bold text-white mb-2">Awaiting Input</h4>
-              <p className="text-xs text-slate-500 max-w-[200px] leading-relaxed">
-                Run a security scan to evaluate audio authenticity and detect fraud patterns.
+              <h4 className="text-[11px] uppercase tracking-[0.2em] font-bold text-white mb-2">Neural Link Idle</h4>
+              <p className="text-[10px] text-slate-600 max-w-[220px] leading-relaxed uppercase font-bold tracking-widest">
+                Awaiting input stream to evaluate material authenticity and detection matrices.
               </p>
             </div>
           )}
         </div>
-      </div>
+      </section>
     </div>
   );
 }
