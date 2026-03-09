@@ -1,15 +1,4 @@
-// import React from 'react'
-
-// const Register = () => {
-//   return (
-//     <div>Register</div>
-//   )
-// }
-
-// export default Register
-
 import React, { useState } from 'react';
-import InputBox from '../components/InputBox';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -17,38 +6,47 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    // Placeholder: just log values for now
     console.log({ email, password });
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-slate-900">
+    <div className="flex items-center justify-center min-h-screen bg-[#0d1520] px-4">
       <form
         onSubmit={handleRegister}
-        className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 shadow-lg w-full max-w-md space-y-6"
+        className="bg-[#131d2b]/50 p-8 border border-[#1b2636] shadow-xl w-full max-w-md space-y-6 animate-fade-slide-up"
       >
-        <h2 className="text-2xl font-bold text-white text-center">Register</h2>
-        <InputBox
-          id="email"
-          label="Email"
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <InputBox
-          id="password"
-          label="Password"
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="text-center mb-8">
+           <h2 className="text-2xl font-bold text-white font-syne uppercase tracking-wider italic">Initialize Account</h2>
+           <p className="text-slate-500 text-sm mt-2 font-medium">Create your TrustLayer-X credentials</p>
+        </div>
+        
+        <div>
+          <label className="text-[10px] text-[#22d3ee] font-bold block mb-2 font-syne tracking-[0.2em] uppercase">Email Identity</label>
+          <input
+            type="email"
+            placeholder="system@access.root"
+            className="w-full bg-[#0d1520] border border-[#1b2636] px-4 py-3 rounded-none text-white focus:outline-none focus:border-[#22d3ee] transition-all font-dmsans placeholder:text-slate-700"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        <div>
+           <label className="text-[10px] text-[#22d3ee] font-bold block mb-2 font-syne tracking-[0.2em] uppercase">Secure Cipher</label>
+          <input
+            type="password"
+            placeholder="••••••••"
+            className="w-full bg-[#0d1520] border border-[#1b2636] px-4 py-3 rounded-none text-white focus:outline-none focus:border-[#22d3ee] transition-all font-dmsans"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
         <button
           type="submit"
-          className="w-full bg-purple-500 hover:bg-purple-400 text-white font-bold py-3 px-4 rounded-lg transform transition-transform duration-200 hover:scale-105"
+          className="w-full bg-[#22d3ee] hover:bg-[#0891b2] text-[#0d1520] font-bold py-4 px-4 transition-all duration-300 uppercase tracking-[0.25em] text-[10px] font-syne mt-4 shadow-lg shadow-[#22d3ee]/10"
         >
-          Register
+          Activate Credentials
         </button>
       </form>
     </div>
