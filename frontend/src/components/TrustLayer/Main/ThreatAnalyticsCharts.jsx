@@ -1,25 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { BarChart3 } from 'lucide-react';
-
-const pieData = [
-  { name: 'Scam Calls', value: 42.9, color: '#ff2a2a' },
-  { name: 'Phishing URLs', value: 32.5, color: '#fde047' },
-  { name: 'Domain Spoof', value: 19.5, color: '#22d3ee' },
-  { name: 'Doc Tampering', value: 5.1, color: '#10b981' },
-];
-
-const barData = [
-  { day: 'Mon', threats: 24 },
-  { day: 'Tue', threats: 38 },
-  { day: 'Wed', threats: 15 },
-  { day: 'Thu', threats: 42 },
-  { day: 'Fri', threats: 55 },
-  { day: 'Sat', threats: 68 },
-  { day: 'Sun', threats: 31 },
-];
+import { getScanStats, getScanHistory } from '../../../services/api';
 
 export default function ThreatAnalyticsCharts() {
+  const [stats, setStats] = useState({ textScans: 0, audioScans: 0, videoScans: 0 });
+  const [barData, setBarData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const statsData = await getScanStats();
+      setStats(statsData);
+
+      const history = await getScanHistory();
+      // Process history for bar chart (last 7 days)
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const last7Days = Array.from({length: 7}).map((_, i) => {
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        return { 
+          day: days[d.getDay()], 
+          threats: history.filter(h => new Date(h.createdAt).toDateString() === d.toDateString()).length,
+          dateValue: d.getTime()
+        };
+      }).reverse();
+      
+      setBarData(last7Days);
+    };
+    fetchData();
+  }, []);
+
+  const total = stats.textScans + stats.audioScans + stats.videoScans || 1;
+  const pieData = [
+    { name: 'Text Analysis', value: Math.round((stats.textScans / total) * 100), color: '#ff2a2a' },
+    { name: 'Audio Scans', value: Math.round((stats.audioScans / total) * 100), color: '#fde047' },
+    { name: 'Video Scans', value: Math.round((stats.videoScans / total) * 100), color: '#22d3ee' },
+  ];
   return (
     <section className="bg-[#131d2b] border border-[#1b2636] p-6 animate-fade-slide-up opacity-0" style={{ animationDelay: '600ms' }}>
       <div className="flex items-center gap-2 mb-6">

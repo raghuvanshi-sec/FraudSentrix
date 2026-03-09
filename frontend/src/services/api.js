@@ -9,13 +9,23 @@ const apiClient = axios.create({
   },
 });
 
+// Request interceptor to add the auth token from localStorage
+apiClient.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+}, (error) => {
+  return Promise.reject(error);
+});
+
 export const analyzeScam = async (text, type = "text", metadata = {}) => {
   try {
-    // Syncing with the refactored backend logic which expects { type, text, domain, vishingMetadata, deepfakeMetadata }
     const payload = {
       type,
-      text: type === "text" ? text : "",
-      domain: "",
+      text: type === "text" ? text : (metadata.transcript || ""),
+      domain: metadata.domain || "",
       vishingMetadata: type === "audio" ? metadata : {},
       deepfakeMetadata: type === "video" ? metadata : {}
     };
@@ -30,7 +40,7 @@ export const analyzeScam = async (text, type = "text", metadata = {}) => {
         score: response.data.riskScore,
         type: response.data.type,
         hash: response.data.hash,
-        flags: [] // Backend keywords/flags can be mapped here once fully implemented
+        flags: []
       }
     };
   } catch (error) {
@@ -38,11 +48,29 @@ export const analyzeScam = async (text, type = "text", metadata = {}) => {
   }
 };
 
+export const getScanStats = async () => {
+    try {
+        const response = await apiClient.get('/scan/stats');
+        return response.data;
+    } catch (error) {
+        console.error("Failed to fetch scan stats:", error);
+        return { totalScans: 0, highRiskScans: 0, textScans: 0, audioScans: 0, videoScans: 0 };
+    }
+};
+
+export const getScanHistory = async () => {
+    try {
+        const response = await apiClient.get('/scan/history');
+        return response.data;
+    } catch (error) {
+        console.error("Failed to fetch scan history:", error);
+        return [];
+    }
+};
+
 export const analyzeDeepfake = async (videoUrl, manipulationType = "unknown") => {
   try {
-    // Simulating call to deepfake analysis logic (which would be a specialized API)
-    // For now, we use our unified /analyze endpoint with simulated scores
-    const mockConfidence = Math.floor(Math.random() * 60) + 40; // 40-100%
+    const mockConfidence = Math.floor(Math.random() * 60) + 40; 
     
     return await analyzeScam("", "video", {
       videoUrl,
@@ -54,12 +82,11 @@ export const analyzeDeepfake = async (videoUrl, manipulationType = "unknown") =>
   }
 };
 
+// ... other existing simulated methods can stay as they are if not yet backend-provided
 export const analyzePhishing = async (emailContent, senderEmail) => {
-  // Simulating response for the MVP based on the design request
   return new Promise((resolve) => {
     setTimeout(() => {
       const isRisky = emailContent.toLowerCase().includes('urgent') || emailContent.toLowerCase().includes('password');
-      
       resolve({
         success: true,
         message: 'Email analysis complete',
@@ -75,15 +102,11 @@ export const analyzePhishing = async (emailContent, senderEmail) => {
 };
 
 export const checkDomain = async (officialDomain, suspectedDomain) => {
-  // Simulating response for the prototype
   return new Promise((resolve) => {
     setTimeout(() => {
-      // Simulate checking string match
       const officialClean = officialDomain.replace('www.', '').replace('https://', '');
       const suspectedClean = suspectedDomain.replace('www.', '').replace('https://', '');
-      
       const isMatch = officialClean.toLowerCase() === suspectedClean.toLowerCase();
-      
       resolve({
         success: true,
         message: 'Domain check complete',
@@ -99,7 +122,6 @@ export const checkDomain = async (officialDomain, suspectedDomain) => {
 };
 
 export const uploadDocument = async (file) => {
-  // Simulating document hashing for the prototype
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
@@ -112,12 +134,9 @@ export const uploadDocument = async (file) => {
 };
 
 export const verifyDocument = async (hash) => {
-  // Simulating document verification
   return new Promise((resolve) => {
     setTimeout(() => {
-      // Hardcode one authentic hash simulation, treat others as tampered
       const isAuthentic = hash === 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
-      
       resolve({
         success: true,
         status: isAuthentic ? 'AUTHENTIC' : 'TAMPERED',

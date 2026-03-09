@@ -2,9 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 const authMiddleware = require("../middlewares/authMiddleware");
-const { analyzeText } = require("../controllers/scanController");
+const { analyze, getHistory, getStats } = require("../controllers/scanController");
 
-// Analyze text for scam / trust risk
-router.post("/analyze", authMiddleware, analyzeText);
+// Unified Analyze endpoint
+router.post("/analyze", authMiddleware, analyze);
+
+// History and Stats endpoints
+router.get("/history", authMiddleware, getHistory);
+router.get("/stats", authMiddleware, getStats);
 
 module.exports = router;

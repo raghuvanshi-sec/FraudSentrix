@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
-import { PhoneCall, Fingerprint, Search } from 'lucide-react';
+import { PhoneCall, Fingerprint, Search, AlertCircle } from 'lucide-react';
 import Badge from '../Shared/Badge';
+import { analyzeScam } from '../../../services/api';
 
 export default function ScamDetection() {
   const [analyzing, setAnalyzing] = useState(false);
   const [result, setResult] = useState(null);
+  const [transcript, setTranscript] = useState("Hello, this is fraud department from your bank. We detected suspicious activity. Please verify your identity by providing your routing number immediately, or your account will be locked.");
+  const [error, setError] = useState(null);
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
+    if (!transcript.trim()) return;
+    
     setAnalyzing(true);
-    setTimeout(() => {
-      setResult({
-        score: 85,
-        level: 'HIGH',
-        keywords: ['Bank transfer', 'Urgent verify', 'Routing number']
-      });
+    setError(null);
+    try {
+      const response = await analyzeScam(transcript, 'text');
+      if (response.success) {
+        setResult({
+          score: response.data.score,
+          level: response.data.risk,
+          keywords: response.data.score > 70 ? ['Urgent Attention', 'Verification Needed', 'Suspicious Language'] : ['Safe Pattern']
+        });
+      }
+    } catch (err) {
+      setError(err.message || "Failed to analyze transcript.");
+    } finally {
       setAnalyzing(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -31,7 +43,8 @@ export default function ScamDetection() {
         <textarea 
           className="flex-1 min-h-[120px] w-full bg-[#0d1520] border border-[#1b2636] focus:border-[#22d3ee] p-4 text-sm resize-none outline-none font-dmsans text-slate-300 transition-colors placeholder:text-slate-600 mb-4"
           placeholder="Paste call transcript here..."
-          defaultValue="Hello, this is fraud department from your bank. We detected suspicious activity. Please verify your identity by providing your routing number immediately, or your account will be locked."
+          value={transcript}
+          onChange={(e) => setTranscript(e.target.value)}
         />
         <div className="flex justify-end">
           <button 
@@ -46,6 +59,12 @@ export default function ScamDetection() {
             )}
           </button>
         </div>
+        {error && (
+          <div className="mt-4 flex items-center gap-2 text-[#ff2a2a] text-xs font-bold animate-pulse">
+            <AlertCircle size={14} />
+            {error}
+          </div>
+        )}
       </div>
 
       {/* Result Panel */}

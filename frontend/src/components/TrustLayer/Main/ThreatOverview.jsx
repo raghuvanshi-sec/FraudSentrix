@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import StatCard from '../Shared/StatCard';
-import { Activity, AlertTriangle, MailWarning, Globe, FileWarning } from 'lucide-react';
+import { Activity, AlertTriangle, Mic, Video, FileText } from 'lucide-react';
+import { getScanStats } from '../../../services/api';
 
 export default function ThreatOverview() {
+  const [statsData, setStatsData] = useState({
+    totalScans: 0,
+    highRiskScans: 0,
+    textScans: 0,
+    audioScans: 0,
+    videoScans: 0
+  });
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      const data = await getScanStats();
+      setStatsData(data);
+    };
+    fetchStats();
+    // Refresh stats every 30 seconds
+    const interval = setInterval(fetchStats, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
   const stats = [
-    { title: 'Total Scans', value: '132', icon: Activity, colorClass: 'text-[#22d3ee]' },
-    { title: 'High Risk Alerts', value: '28', icon: AlertTriangle, colorClass: 'text-[#ff2a2a]' },
-    { title: 'Phishing Detected', value: '41', icon: MailWarning, colorClass: 'text-orange-500' },
-    { title: 'Domains Flagged', value: '16', icon: Globe, colorClass: 'text-[#fde047]' },
-    { title: 'Docs Tampered', value: '7', icon: FileWarning, colorClass: 'text-[#10b981]' },
+    { title: 'Total Scans', value: statsData.totalScans.toString(), icon: Activity, colorClass: 'text-[#22d3ee]' },
+    { title: 'High Risk Alerts', value: statsData.highRiskScans.toString(), icon: AlertTriangle, colorClass: 'text-[#ff2a2a]' },
+    { title: 'Text Analysis', value: statsData.textScans.toString(), icon: FileText, colorClass: 'text-orange-500' },
+    { title: 'Audio Scans', value: statsData.audioScans.toString(), icon: Mic, colorClass: 'text-[#fde047]' },
+    { title: 'Video Scans', value: statsData.videoScans.toString(), icon: Video, colorClass: 'text-[#10b981]' },
   ];
 
   return (

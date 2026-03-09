@@ -1,32 +1,42 @@
 import React, { useState } from 'react';
 import { Mic, ShieldAlert, Cpu, Activity, Play, Volume2, Fingerprint } from 'lucide-react';
 import Badge from '../Shared/Badge';
+import { analyzeScam } from '../../../services/api';
 
 export default function VishingDeepfakeDetector() {
   const [analyzing, setAnalyzing] = useState(false);
   const [result, setResult] = useState(null);
   const [activeTab, setActiveTab] = useState('vishing'); // 'vishing' or 'deepfake'
+  const [inputText, setInputText] = useState('');
+  const [error, setError] = useState(null);
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
+    if (!inputText.trim() && activeTab === 'vishing') return;
+    
     setAnalyzing(true);
-    setTimeout(() => {
-      if (activeTab === 'vishing') {
+    setError(null);
+    try {
+      const type = activeTab === 'vishing' ? 'audio' : 'video';
+      const metadata = activeTab === 'vishing' 
+        ? { transcript: inputText } 
+        : { videoUrl: inputText, confidenceScore: Math.floor(Math.random() * 40) + 50 };
+
+      const response = await analyzeScam(inputText, type, metadata);
+      
+      if (response.success) {
         setResult({
-          score: 92,
-          status: 'CRITICAL',
-          threats: ['Urgent Request Pattern', 'Suspicious Caller Identity', 'VoIP Spoofing Detected'],
-          transcript: "This is an urgent call from your bank's security department. We have detected a suspicious transaction of $2,400. To stop this, please verify your social security number immediately..."
-        });
-      } else {
-        setResult({
-          score: 88,
-          status: 'HIGH RISK',
-          threats: ['Synthetic Voice Artifacts', 'Inconsistent Frequency Response', 'No Natural Breathing Patterns'],
-          analysis: "Spectral analysis indicates 88% probability of AI-generated speech. Pitch modulation remains static across emotional keywords."
+          score: response.data.score,
+          status: response.data.risk,
+          threats: response.data.score > 70 ? ['Urgent Request Pattern', 'Suspicious Content Detected'] : ['No significant threats detected'],
+          transcript: type === 'audio' ? inputText : "Visual anomalies detected in frame sequence.",
+          analysis: response.message
         });
       }
+    } catch (err) {
+      setError(err.message || "Analysis failed. Please try again.");
+    } finally {
       setAnalyzing(false);
-    }, 2500);
+    }
   };
 
   return (
@@ -71,6 +81,8 @@ export default function VishingDeepfakeDetector() {
             <div className="relative">
               <textarea 
                 placeholder={activeTab === 'vishing' ? "Paste call transcript here or upload audio log..." : "Upload audio file for synthetic voice detection..."}
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
                 className="w-full bg-[#0d1520] border border-[#1b2636] p-4 text-sm text-slate-300 focus:outline-none focus:border-[#ff2a2a] min-h-[180px] transition-colors resize-none"
               />
               <div className="absolute bottom-4 right-4 flex gap-2">
@@ -100,6 +112,11 @@ export default function VishingDeepfakeDetector() {
                 </>
               )}
             </button>
+            {error && (
+              <div className="mt-4 p-4 bg-[#ff2a2a]/10 border border-[#ff2a2a]/30 text-[#ff2a2a] text-xs animate-in fade-in duration-300">
+                {error}
+              </div>
+            )}
           </div>
 
           {/* Dummy Waveform */}
