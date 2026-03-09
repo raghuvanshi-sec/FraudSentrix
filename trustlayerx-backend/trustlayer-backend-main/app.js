@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_URI)
    ROOT ROUTE
 ========================= */
 app.get("/", (req, res) => {
-    res.send("TrustLayer Backend Running 🚀");
+    res.send("TrustLayerX Backend Running 🚀");
 });
 
 const Scan = require("./models/Scan");

@@ -1,4 +1,4 @@
-# 🛡️ FraudSentrix | TrustLayer Lite X
+# 🛡️ TrustLayerX
 
 > **Combatting Digital Arrest Scams & Cyber Threats with Advanced Analytics**
 
@@ -6,7 +6,7 @@
 ![Backend](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-green)
 ![Status](https://img.shields.io/badge/Status-Active%20Development-yellow)
 
-**TrustLayer Lite X** is a modern, premium cybersecurity dashboard and API backend designed to protect users from sophisticated digital threats, specifically targeting "digital arrest" impersonation scams, phishing attempts, domain spoofing, and document tampering.
+**TrustLayerX** is a modern, premium cybersecurity dashboard and API backend designed to protect users from sophisticated digital threats, specifically targeting "digital arrest" impersonation scams, phishing attempts, domain spoofing, and document tampering.
 
 It provides an enterprise-grade "Cyber Command Center" UI backed by a robust Node.js reporting structure.
 
@@ -41,7 +41,7 @@ JWT_SECRET=your_super_secret_64_character_hex_string
 
 ### 3. Run the Development Servers
 
-From the root `FraudSentrix` folder, start both the React frontend and Node backend simultaneously:
+From the root `TrustLayerX` folder, start both the React frontend and Node backend simultaneously:
 
 ```bash
 npm run dev
@@ -106,7 +106,7 @@ A highly professional, dark-themed React SPA using Tailwind CSS v4.
 
 ## 🤝 Contributing
 
-TrustLayer Lite X is built for security. We welcome contributions, especially regarding heuristic AI model improvements for the text analysis engine.
+TrustLayerX is built for security. We welcome contributions, especially regarding heuristic AI model improvements for the text analysis engine.
 
 - Ensure all code conforms to the clean-code standards outlined in the repository.
 - Submit pull requests to the `integration` branch.

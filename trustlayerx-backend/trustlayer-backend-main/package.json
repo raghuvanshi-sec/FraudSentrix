@@ -1,7 +1,7 @@
 {
-  "name": "trustlayer-backend",
+  "name": "trustlayerx-backend",
   "version": "1.0.0",
-  "description": "Backend for TrustLayer Lite X",
+  "description": "Backend for TrustLayerX",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

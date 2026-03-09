@@ -21,7 +21,7 @@ const CyberHero = () => {
             <span className="text-xs font-semibold tracking-wider text-slate-300 uppercase">System Active & Monitoring</span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] animate-in slide-in-from-left duration-700">
             Defend Against <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-safe-green via-emerald-400 to-teal-500">
               Digital Deception
@@ -29,16 +29,19 @@ const CyberHero = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed max-w-xl">
-            TrustLayer Lite X is an advanced threat detection platform. We analyze transcripts, scrutinize domains, and cryptographically verify documents to protect you from modern scams.
+            TrustLayerX is an advanced threat detection platform. We analyze transcripts, scrutinize domains, and cryptographically verify documents to protect you from modern scams.
           </p>
           
-          <div className="flex flex-wrap items-center gap-4 pt-4">
+           <div className="flex flex-wrap items-center gap-4 pt-4">
             <div className="flex items-center gap-2 text-sm text-slate-500 font-medium">
                <svg className="w-5 h-5 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
                Zero-Trust Architecture
-            </div>
+            </div> 
+            
+            
+ 
             <div className="w-1.5 h-1.5 rounded-full bg-slate-700 hidden sm:block"></div>
             <div className="flex items-center gap-2 text-sm text-slate-500 font-medium">
                <svg className="w-5 h-5 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
