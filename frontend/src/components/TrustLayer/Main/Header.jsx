@@ -1,12 +1,18 @@
-import React from 'react';
-import { ShieldAlert, Bell } from 'lucide-react';
-import { NavLink } from 'react-router';
+import { ShieldAlert, Bell, Rocket } from 'lucide-react';
+import { NavLink, useLocation, Link } from 'react-router';
 
 export default function Header() {
-  const tabs = [
+  const location = useLocation();
+  const isDashboard = location.pathname.startsWith('/dashboard');
+
+  const landingTabs = [
     { name: 'Home', path: '/', exact: true },
     { name: 'Features', path: '/#features' },
     { name: 'How it Works', path: '/#how-it-works' },
+  ];
+
+  const dashboardTabs = [
+    { name: 'Home', path: '/', exact: true },
     { name: 'Dashboard', path: '/dashboard', exact: true },
     { name: 'Text Analyzer', path: '/dashboard/scam-detection' },
     { name: 'Vishing & Deepfake', path: '/dashboard/vishing-deepfake' },
@@ -14,6 +20,8 @@ export default function Header() {
     { name: 'Domain Check', path: '/dashboard/domain-checker' },
     { name: 'Doc Verify', path: '/dashboard/document-verification' }
   ];
+
+  const tabs = isDashboard ? dashboardTabs : landingTabs;
   
   return (
     <header className="sticky top-0 z-50 bg-[#0d1520]/90 backdrop-blur-md border-b border-[#1b2636]">
@@ -51,15 +59,27 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* User Actions */}
+        {/* User Actions / CTA */}
         <div className="flex items-center gap-4">
-          <button className="relative p-2 text-slate-400 hover:text-white transition-colors">
-            <Bell size={20} />
-            <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#ff2a2a] animate-pulse-dot" />
-          </button>
-          <div className="w-9 h-9 border border-[#1b2636] bg-[#131d2b] flex items-center justify-center cursor-pointer hover:border-slate-500 transition-colors">
-            <span className="text-xs font-bold font-syne text-[#22d3ee]">OP</span>
-          </div>
+          {isDashboard ? (
+            <>
+              <button className="relative p-2 text-slate-400 hover:text-white transition-colors">
+                <Bell size={20} />
+                <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#ff2a2a] animate-pulse-dot" />
+              </button>
+              <div className="w-9 h-9 border border-[#1b2636] bg-[#131d2b] flex items-center justify-center cursor-pointer hover:border-slate-500 transition-colors">
+                <span className="text-xs font-bold font-syne text-[#22d3ee]">OP</span>
+              </div>
+            </>
+          ) : (
+            <Link 
+              to="/dashboard" 
+              className="bg-[#10b881] hover:bg-[#0da070] text-white px-5 py-2 text-sm font-bold font-syne transition-all flex items-center gap-2 group shadow-lg shadow-[#10b881]/20"
+            >
+              Launch Dashboard
+              <Rocket size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
+          )}
         </div>
       </div>
     </header>
