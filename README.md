@@ -1,10 +1,6 @@
-# 🛡️ TrinetraAI
+# 🛡️ TrustLayer-X
 
 > Combatting Digital Arrest Scams with Real-Time Multimodal AI
-
-![Hackathon](https://img.shields.io/badge/Hackathon-Project-blue)
-![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
-![AI](https://img.shields.io/badge/AI-Powered-orange)
 
 ---
 
@@ -12,9 +8,9 @@
 
 As AI technology becomes more accessible, organized cybercriminals are increasingly using **deepfakes, voice cloning, and psychological manipulation** to execute "digital arrest" scams. Victims are coerced into believing they are under investigation by law enforcement, leading to devastating financial and emotional damage.
 
-## 💡 The Solution: TrustShield AI
+## 💡 The Solution: TrustLayer-X
 
-**TrustShield AI** (by FraudSentrix) is an intelligent, real-time fraud prevention system that acts as a digital guardian. By continuously analyzing communication streams—voice, video, and behavior—it detects impersonation attempts and psychological manipulation *before* it's too late.
+**TrustLayer-X** (by CodeBlooded) is an intelligent, real-time fraud prevention system that acts as a digital guardian. By continuously analyzing communication streams—voice, video, and behavior—it detects impersonation attempts and psychological manipulation *before* it's too late.
 
 ### ✨ Key Features
 
@@ -38,7 +34,7 @@ Instructions for running TrustShield AI locally will be added here once the MVP 
 
 ```bash
 # General placeholder for future setup
-git clone https://github.com/your-username/TrinetraAI.git
+git clone https://github.com/your-username/TrustLayer-X.git
 cd FraudSentrix
 # Install dependencies and run...
 ```
@@ -48,4 +44,4 @@ cd FraudSentrix
 We welcome contributions! Feel free to open issues or submit pull requests. Let's build a safer digital environment together.
 
 ---
-*Built with ❤️ for a safer internet by Team FraudSentrix.*
+*Built with ❤️ for a safer internet by Team CodeBlooded.*
