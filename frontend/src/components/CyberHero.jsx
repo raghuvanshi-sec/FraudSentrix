@@ -2,7 +2,7 @@ import React from 'react';
 
 const CyberHero = () => {
   return (
-    <div className="relative w-full overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl mb-12 group">
+    <div className="relative w-full overflow-hidden rounded-none bg-slate-900 border border-slate-800 shadow-2xl mb-12 group">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-20 pointer-events-none"></div>
       

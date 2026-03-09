@@ -24,11 +24,11 @@ export default function ThreatOverview() {
   }, []);
 
   const stats = [
-    { title: 'Total Scans', value: statsData.totalScans.toString(), icon: Activity, colorClass: 'text-slate-400' },
+    { title: 'Total Scans', value: statsData.totalScans.toString(), icon: Activity, colorClass: 'text-white' },
     { title: 'High Risk Alerts', value: statsData.highRiskScans.toString(), icon: AlertTriangle, colorClass: 'text-[#ff2a2a]' },
-    { title: 'Text Analysis', value: statsData.textScans.toString(), icon: FileText, colorClass: 'text-[#22d3ee]' },
-    { title: 'Audio Scans', value: statsData.audioScans.toString(), icon: Mic, colorClass: 'text-[#10b981]' },
-    { title: 'Video Scans', value: statsData.videoScans.toString(), icon: Video, colorClass: 'text-[#ff2a2a]' },
+    { title: 'Text Analyzer', value: statsData.textScans.toString(), icon: FileText, colorClass: 'text-[#22d3ee]' },
+    { title: 'Audio Analysis', value: statsData.audioScans.toString(), icon: Mic, colorClass: 'text-[#10b981]' },
+    { title: 'Video Analysis', value: statsData.videoScans.toString(), icon: Video, colorClass: 'text-[#ff2a2a]' },
   ];
 
   return (
@@ -37,7 +37,7 @@ export default function ThreatOverview() {
         <h2 className="text-sm uppercase tracking-widest text-[#22d3ee] font-bold">Threat Overview</h2>
         <div className="h-[1px] flex-1 bg-gradient-to-r from-[#1b2636] to-transparent ml-4" />
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         {stats.map((stat, i) => (
           <StatCard key={stat.title} {...stat} delay={i * 100} />
         ))}

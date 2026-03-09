@@ -5,12 +5,12 @@ import CyberHero from '../components/CyberHero';
 const Dashboard = () => {
   const tools = [
     {
-      title: 'Scam Detection',
+      title: 'Text Analyzer',
       description: 'Analyze transcripts from phone calls or text messages for potential scams and impersonation.',
       icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
       path: '/dashboard/scam-detection',
-      color: 'bg-blue-500/10 text-blue-400 border-blue-500/30 group-hover:bg-blue-500/20 group-hover:border-blue-400/50',
-      glow: 'group-hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)]'
+      color: 'bg-[#22d3ee]/10 text-[#22d3ee] border-[#22d3ee]/30 group-hover:bg-[#22d3ee]/20 group-hover:border-[#22d3ee]/50',
+      glow: 'group-hover:shadow-[0_0_30px_-5px_rgba(34,211,238,0.3)]'
     },
     {
       title: 'Vishing Detection',
@@ -69,7 +69,7 @@ const Dashboard = () => {
           <Link 
             key={tool.title} 
             to={tool.path}
-            className={`group block relative rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:bg-slate-800 p-8 transition-all duration-500 overflow-hidden hover:-translate-y-1 ${tool.glow}`}
+            className={`group block relative rounded-none bg-slate-800/40 border border-slate-700/50 hover:bg-slate-800 p-8 transition-all duration-500 overflow-hidden hover:-translate-y-1 ${tool.glow}`}
           >
             {/* Hover Gradient Overlay */}
             <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 ${tool.color.split(' ')[0]}`}></div>

@@ -44,7 +44,7 @@ export default function ModelManagement() {
   if (!status) return null;
 
   return (
-    <section className="bg-[#131d2b] border border-[#1b2636] p-6 animate-fade-slide-up opacity-0" style={{ animationDelay: '800ms' }}>
+    <section className="bg-[#131d2b] border border-[#1b2636] p-8 animate-fade-slide-up rounded-none opacity-0" style={{ animationDelay: '800ms' }}>
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-[#ff2a2a]/10 flex items-center justify-center">
