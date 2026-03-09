@@ -4,8 +4,9 @@ import { NavLink } from 'react-router';
 
 export default function Header() {
   const tabs = [
+    { name: 'Home', path: '/', exact: true },
     { name: 'Dashboard', path: '/dashboard', exact: true },
-    { name: 'Scam Detection', path: '/dashboard/scam-detection' },
+    { name: 'Text Analyzer', path: '/dashboard/scam-detection' },
     { name: 'Vishing & Deepfake', path: '/dashboard/vishing-deepfake' },
     { name: 'Phishing Alerts', path: '/dashboard/phishing-analyzer' },
     { name: 'Domain Check', path: '/dashboard/domain-checker' },
