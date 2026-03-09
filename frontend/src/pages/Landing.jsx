@@ -34,7 +34,7 @@ export default function Landing() {
             <div className="w-9 h-9 bg-gradient-to-br from-[#22d3ee] to-[#0891b2] rounded-lg flex items-center justify-center shadow-lg shadow-[#22d3ee]/20">
               <ShieldAlert size={20} className="text-white" />
             </div>
-            <span className="font-syne font-bold text-xl tracking-tight text-white italic">TrustLayer Lite-X</span>
+            <span className="font-syne font-bold text-xl tracking-tight text-white italic">TrustLayer-X</span>
           </div>
 
           <div className="hidden md:flex items-center gap-10">
@@ -96,7 +96,7 @@ export default function Landing() {
                       <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></div>
                       <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]"></div>
                    </div>
-                   <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest italic">TrustLayer Control v4.0</div>
+                   <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest italic">TrustLayer-X Control v4.0</div>
                    <div className="flex gap-4">
                       <Bell size={12} className="text-slate-500" />
                       <div className="w-4 h-4 rounded-full bg-slate-700" />
@@ -125,7 +125,7 @@ export default function Landing() {
       </header>
 
       {/* Threats Section */}
-      <section className="relative z-10 py-24 bg-white/[0.02] border-y border-white/5">
+      <section id="features" className="relative z-10 py-24 bg-white/[0.02] border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl md:text-5xl font-syne font-bold text-white tracking-tight">The Growing Threat of Digital Fraud</h2>
@@ -169,9 +169,9 @@ export default function Landing() {
       </section>
 
       {/* Process Flow Section */}
-      <section className="relative z-10 py-32 max-w-7xl mx-auto px-6 overflow-hidden">
+      <section id="how-it-works" className="relative z-10 py-32 max-w-7xl mx-auto px-6 overflow-hidden">
         <div className="text-center mb-20">
-          <h2 className="text-4xl font-syne font-bold text-white mb-4">How TrustLayer Lite-X Protects You</h2>
+          <h2 className="text-4xl font-syne font-bold text-white mb-4">How TrustLayer-X Protects You</h2>
           <p className="text-slate-500 font-medium max-w-2xl mx-auto">Real-time analytics powered by machine learning uncover threats and stop digital fraud in its tracks through a multi-stage neural pipeline.</p>
         </div>
 
@@ -210,7 +210,7 @@ export default function Landing() {
       </section>
 
       {/* Intelligence Section (Stats) */}
-      <section className="relative z-10 py-24 bg-[#131d2b]/20 border-y border-white/5">
+      <section id="stats" className="relative z-10 py-24 bg-[#131d2b]/20 border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-5xl font-syne font-bold text-white mb-4">Intelligent Threat Intelligence</h2>
           <p className="text-slate-500 font-medium mb-20">Real-time analytics powered by machine learning uncover threats fraud in its tracks.</p>
@@ -240,7 +240,7 @@ export default function Landing() {
            <div className="absolute inset-0 bg-gradient-to-br from-[#131d2b] to-[#070b14] -z-10 border border-white/5"></div>
            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_transparent_0%,_#070b14_100%)] opacity-20"></div>
            
-           <h2 className="text-4xl md:text-6xl font-syne font-bold text-white mb-8">Get Started with TrustLayer Lite-X</h2>
+           <h2 className="text-4xl md:text-6xl font-syne font-bold text-white mb-8">Get Started with TrustLayer-X</h2>
            <p className="text-slate-400 text-lg mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
              Safeguard your digital presence with cutting edge AI detection tools. <br className="hidden md:block" />
              Join the network of protected individuals today.
@@ -262,7 +262,7 @@ export default function Landing() {
             <div className="w-8 h-8 bg-slate-800 rounded flex items-center justify-center">
               <ShieldAlert size={16} className="text-slate-400" />
             </div>
-            <span className="font-syne font-bold text-lg text-white">TrustLayer Lite-X</span>
+            <span className="font-syne font-bold text-lg text-white">TrustLayer-X</span>
           </div>
           
           <div className="flex gap-12 text-sm font-medium text-slate-500">

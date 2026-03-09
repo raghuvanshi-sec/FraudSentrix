@@ -5,9 +5,14 @@ import { NavLink } from 'react-router';
 export default function Header() {
   const tabs = [
     { name: 'Home', path: '/', exact: true },
-    { name: 'Features', path: '#features' },
-    { name: 'How it Works', path: '#how-it-works' },
-    { name: 'Team', path: '#team' },
+    { name: 'Features', path: '/#features' },
+    { name: 'How it Works', path: '/#how-it-works' },
+    { name: 'Dashboard', path: '/dashboard', exact: true },
+    { name: 'Text Analyzer', path: '/dashboard/scam-detection' },
+    { name: 'Vishing & Deepfake', path: '/dashboard/vishing-deepfake' },
+    { name: 'Phishing Alerts', path: '/dashboard/phishing-analyzer' },
+    { name: 'Domain Check', path: '/dashboard/domain-checker' },
+    { name: 'Doc Verify', path: '/dashboard/document-verification' }
   ];
   
   return (
@@ -19,7 +24,7 @@ export default function Header() {
           <div className="w-8 h-8 bg-gradient-to-br from-[#ff2a2a] to-orange-600 flex items-center justify-center">
             <ShieldAlert size={18} className="text-white" />
           </div>
-          <span className="font-syne font-bold text-xl tracking-wide text-white">TrustLayerX</span>
+          <span className="font-syne font-bold text-xl tracking-wide text-white">TrustLayer-X</span>
         </div>
 
         {/* Navigation Tabs (Desktop) */}
