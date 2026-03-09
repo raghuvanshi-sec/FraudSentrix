@@ -14,6 +14,7 @@ import DocumentVerification from "../components/TrustLayer/Main/DocumentVerifica
 import ThreatAnalyticsCharts from "../components/TrustLayer/Main/ThreatAnalyticsCharts";
 
 import VishingDeepfakeDetector from "../components/TrustLayer/Main/VishingDeepfakeDetector";
+import ModelManagement from "../components/TrustLayer/Main/ModelManagement";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
         element: (
           <div className="flex flex-col gap-6 lg:gap-8">
             <ThreatOverview />
+            <ModelManagement />
             <ThreatAnalyticsCharts />
           </div>
         )

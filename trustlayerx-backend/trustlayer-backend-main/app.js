@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes");
 const scanRoutes = require("./routes/scanRoutes");
+const mlRoutes = require("./routes/mlRoutes");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/scan", scanRoutes);
+app.use("/api/ml", mlRoutes);
 
 /* =========================
    MONGODB CONNECTION
