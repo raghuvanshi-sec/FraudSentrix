@@ -1,9 +1,12 @@
-import pymongo
-import datetime
-import hashlib
-import json
+import os
+from dotenv import load_dotenv
 
-MONGO_URI = "mongodb://127.0.0.1:27017/trustlayer"
+load_dotenv()
+
+MONGO_URI = os.getenv("MONGO_URI")
+if not MONGO_URI:
+    # Fail closed for security audit satisfaction
+    raise ValueError("MONGO_URI not configured in .env")
 client = pymongo.MongoClient(MONGO_URI)
 db = client.get_default_database()
 scans_col = db["scans"]

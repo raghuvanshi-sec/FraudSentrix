@@ -5,7 +5,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://127.0.0.1:27017/trustlayer")
+MONGO_URI = os.getenv("MONGO_URI")
+if not MONGO_URI:
+    raise ValueError("MONGO_URI environment variable not set. Security protocol requires explicitly defined connection strings.")
 
 def load_data():
     """
