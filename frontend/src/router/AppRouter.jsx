@@ -4,12 +4,16 @@ import AuthLayout from "../layout/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
-import DashboardLayout from "../layout/DashboardLayout";
-import Dashboard from "../pages/Dashboard";
-import ScamDetection from "../pages/ScamDetection";
-import PhishingAnalyzer from "../pages/PhishingAnalyzer";
-import DomainChecker from "../pages/DomainChecker";
-import DocumentVerification from "../pages/DocumentVerification";
+import TrustLayerLayout from "../layout/TrustLayerLayout";
+// Reusing the views we built:
+import ThreatOverview from "../components/TrustLayer/Main/ThreatOverview";
+import ScamDetection from "../components/TrustLayer/Main/ScamDetection";
+import PhishingEmailAnalyzer from "../components/TrustLayer/Main/PhishingEmailAnalyzer";
+import DomainImpersonationChecker from "../components/TrustLayer/Main/DomainImpersonationChecker";
+import DocumentVerification from "../components/TrustLayer/Main/DocumentVerification";
+import ThreatAnalyticsCharts from "../components/TrustLayer/Main/ThreatAnalyticsCharts";
+
+import VishingDeepfakeDetector from "../components/TrustLayer/Main/VishingDeepfakeDetector";
 
 const router = createBrowserRouter([
   {
@@ -32,23 +36,33 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <TrustLayerLayout />, // Our new Tech-Brutalist Shell
     children: [
       {
         index: true,
-        element: <Dashboard />
+        // The dashboard home combines Overview and Charts
+        element: (
+          <div className="flex flex-col gap-6 lg:gap-8">
+            <ThreatOverview />
+            <ThreatAnalyticsCharts />
+          </div>
+        )
       },
       {
         path: "scam-detection",
         element: <ScamDetection />
       },
       {
+        path: "vishing-deepfake",
+        element: <VishingDeepfakeDetector />
+      },
+      {
         path: "phishing-analyzer",
-        element: <PhishingAnalyzer />
+        element: <PhishingEmailAnalyzer />
       },
       {
         path: "domain-checker",
-        element: <DomainChecker />
+        element: <DomainImpersonationChecker />
       },
       {
         path: "document-verification",
