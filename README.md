@@ -2,6 +2,12 @@
 
 > Combatting Digital Arrest Scams with Real-Time Multimodal AI
 
+
+![React Focus](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue)
+![Backend](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-green)
+![Status](https://img.shields.io/badge/Status-Active%20Development-yellow)
+
+
 ---
 
 ## 🚨 The Problem: Digital Arrest & Deepfake Scams
