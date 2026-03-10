@@ -43,6 +43,7 @@ Instructions for running TrustLayer-x locally will be added here once the MVP is
 git clone https://github.com/your-username/TrustLayer-X.git
 
 # Install dependencies and run...
+npm run install:all
 ```
 
 ## 🤝 Contributing
