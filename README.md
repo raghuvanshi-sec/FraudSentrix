@@ -1,4 +1,4 @@
-# 🛡️ FraudSentrix | TrustLayer Lite X
+# 🛡️ TrustLayer-X
 
 > **Combatting Digital Arrest Scams & Cyber Threats with Advanced Analytics**
 
@@ -41,7 +41,7 @@ JWT_SECRET=your_super_secret_64_character_hex_string
 
 ### 3. Run the Development Servers
 
-From the root `FraudSentrix` folder, start both the React frontend and Node backend simultaneously:
+From the root `Trustlayer-X` folder, start both the React frontend and Node backend simultaneously:
 
 ```bash
 npm run dev
