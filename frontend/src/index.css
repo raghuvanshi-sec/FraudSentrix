@@ -1,24 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #0b1120;
-  --color-slate-800: #1e293b;
-  --color-slate-900: #0f172a;
-  --color-safe-green: #10b981;
-  --color-suspicious-yellow: #f59e0b;
-  --color-risk-red: #ef4444;
-  --color-bg-dark: #0b1120;
-  --color-bg-card: #1e293b;
+  --font-syne: 'Syne', sans-serif;
+  --font-dmsans: 'DM Sans', sans-serif;
+  
+  --color-navy-950: #0d1520;
+  --color-navy-900: #131d2b;
+  --color-navy-800: #1b2636;
+  --color-navy-700: #2d3e54;
+  --color-neon-red: #ff2a2a;
+  --color-acid-yellow: #fde047;
+  --color-cyan-mute: #22d3ee;
+  --color-emerald-neon: #10b981;
+
+  --animate-fade-slide-up: fade-slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-dot: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  @keyframes fade-slide-up {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-dot {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 42, 42, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(255, 42, 42, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 42, 42, 0); }
+  }
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
-    background-color: var(--color-bg-dark);
-    color: white;
-    font-family:
-      "Inter",
-      system-ui,
-      -apple-system,
-      sans-serif;
+    background-color: var(--color-navy-950);
+    color: #e2e8f0;
+    font-family: var(--font-dmsans);
+  }
+  
+  /* Custom scrollbar for tech feel */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-navy-900);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-navy-800);
+    border: 1px solid var(--color-navy-950);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-cyan-mute);
   }
 }

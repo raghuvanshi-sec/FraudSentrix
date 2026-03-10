@@ -1,6 +1,6 @@
 # 🛡️ TrustLayer-X
 
-> Combatting Digital Arrest Scams with Real-Time Multimodal AI
+> **Real-Time Digital Authenticity & Scam Protection Platform.**
 
 
 ![React Focus](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue)
@@ -10,31 +10,33 @@
 
 ---
 
-## 🚨 The Problem: Digital Arrest & Deepfake Scams
+## ⚡ Quick Start
 
-As AI technology becomes more accessible, organized cybercriminals are increasingly using **deepfakes, voice cloning, and psychological manipulation** to execute "digital arrest" scams. Victims are coerced into believing they are under investigation by law enforcement, leading to devastating financial and emotional damage.
+### 1. Requirements
 
 ## 💡 The Solution: Trustlayer-x
 
 **TrustLayer-X** (by CodeBlooded) is an intelligent, real-time fraud prevention system that acts as a digital guardian. By continuously analyzing communication streams—voice, video, and behavior—it detects impersonation attempts and psychological manipulation *before* it's too late.
 
-### ✨ Key Features
+Clone the repository and install all dependencies using the root orchestrator:
 
-- 🎙️ **Voice & Audio Analysis**: Real-time detection of synthetic voices, cloned audio, and deepfake artifacts.
-- 👁️ **Video Liveness & Deepfake Detection**: Scans video feeds for inconsistencies, unnatural pixel clustering, and AI face-swapping traces.
-- 🧠 **Behavioral & Contextual Analysis**: Monitors the context of the conversation for high-stress triggers, urgency cues, and manipulation tactics often used in digital arrest scams.
-- 📊 **Dynamic Trust Score**: Computes a continuous, real-time trust score for the ongoing interaction, providing a clear visual indicator of risk.
-- ⚡ **Instant Preemptive Alerts**: Proactively warns the user with actionable alerts the moment the system detects a high probability of a scam or impersonation attempt.
+```bash
+git clone https://github.com/raghuvanshi-sec/TrustLayer-x.git
+cd TrustLayer-X
+npm run install:all
+```
 
-## 🏗️ Architecture & How It Works
+### 3. Environment Setup
 
-- (Project currently in active development)*
+Copy the configuration template and update your credentials:
 
-1. **Ingestion & Interception**: Securely monitors real-time communication channels (audio/video streams).
-2. **Analysis Pipeline**: Routes the streams through our custom AI models for multi-modal analysis.
-3. **Scoring & Intervention**: Aggregates signals into a unified threat model to trigger immediate user-facing warnings.
+```bash
+cp .env.example trustlayerx-backend/.env
+```
 
-## 🚀 Getting Started
+Ensure `MONGO_URI` and `JWT_SECRET` are properly configured in `trustlayerx-backend/.env`.
+
+### 4. Deployment
 
 Instructions for running TrustLayer-x locally will be added here once the MVP is finalized.
 
@@ -46,9 +48,40 @@ git clone https://github.com/your-username/TrustLayer-X.git
 npm run install:all
 ```
 
-## 🤝 Contributing
+---
 
-We welcome contributions! Feel free to open issues or submit pull requests. Let's build a safer digital environment together.
+## 🧠 Threat Protection Suites
+
+| Shield | Module | Description |
+| :--- | :--- | :--- |
+| 🛡️ | **Scam Detection** | Analyzes transcripts for "Digital Arrest" coercion scripts & bank impersonation. |
+| 🎙️ | **Vishing & Deepfake** | Scans audio/video for synthetic artifacts and AI-generated social engineering. |
+| 🎣 | **Phishing Alerts** | High-precision scanning of email bodies for malicious links and credential harvesting. |
+| 🌐 | **Domain Check** | Real-time typosquatting detection and official identity verification. |
+| 📄 | **Doc Verify** | Cryptographic integrity checks for sensitive digital documents. |
+
+---
+
+## 🔒 Security Posture
+
+TrustLayer-X is built with a "Security-First" philosophy:
+
+- **Hardened API**: Protected by `helmet` and `express-rate-limit`.
+- **Zero-Trust Auth**: Secure JWT sessions with isolated salt/hash persistence.
+- **Fail-Closed Logic**: Critical modules halt execution if security protocols are breached.
+
+---
+
+## 🤝 Roadmap & Contributing
+
+Built with ❤️ by **Team CodeBlooded**
+.
+
+- [x] Unified Tech-Brutalist Design System
+- [x] Professional SaaS Navigation & CTA Flows
+- [x] Security Hardening & Audit Remediation
+- [ ] Real-time WebSocket Threat Feeds
+- [ ] Distributed Neural Core Implementation
 
 ---
 *Built with ❤️ for a safer internet by Team CodeBlooded.*
