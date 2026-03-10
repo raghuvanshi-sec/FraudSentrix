@@ -34,8 +34,8 @@ TrustLayer-X follows a modular, three-tier architecture:
 Clone the repository and install all dependencies using the root orchestrator:
 
 ```bash
-git clone https://github.com/raghuvanshi-sec/TrinetraAI.git
-cd TrinetraAI
+git clone https://github.com/raghuvanshi-sec/TrustLayer-x.git
+cd TrustLayer-X
 npm run install:all
 ```
 
@@ -93,4 +93,4 @@ Built with ❤️ by **Team CodeBlooded**
 - [ ] Distributed Neural Core Implementation
 
 ---
-*© 2026 FraudSentrix Ecosystem. Institutional Grade Protection for All.*
+*© 2026 CodeBlooded Ecosystem. Institutional Grade Protection for All.*
