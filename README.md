@@ -6,7 +6,7 @@
 ![Backend](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-green)
 ![Status](https://img.shields.io/badge/Status-Active%20Development-yellow)
 
-**TrustLayer Lite X** is a modern, premium cybersecurity dashboard and API backend designed to protect users from sophisticated digital threats, specifically targeting "digital arrest" impersonation scams, phishing attempts, domain spoofing, and document tampering.
+**TrustLayer-X** is a modern, premium cybersecurity dashboard and API backend designed to protect users from sophisticated digital threats, specifically targeting "digital arrest" impersonation scams, phishing attempts, domain spoofing, and document tampering.
 
 It provides an enterprise-grade "Cyber Command Center" UI backed by a robust Node.js reporting structure.
 
@@ -22,7 +22,7 @@ It provides an enterprise-grade "Cyber Command Center" UI backed by a robust Nod
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/raghuvanshi-sec/FraudSentrix.git
+git clone https://github.com/raghuvanshi-sec/TrustLayer-X.git
 cd FraudSentrix
 
 # Install dependencies for both Frontend and Backend automatically
@@ -35,7 +35,7 @@ Create a `.env` file in the `trustlayer-backend-main` directory:
 
 ```env
 PORT=3000
-MONGO_URI=mongodb://127.0.0.1:27017/trustlayer
+MONGO_URI=mongodb://127.0.0.1:27017/trustlayer-x
 JWT_SECRET=your_super_secret_64_character_hex_string
 ```
 
@@ -106,7 +106,7 @@ A highly professional, dark-themed React SPA using Tailwind CSS v4.
 
 ## 🤝 Contributing
 
-TrustLayer Lite X is built for security. We welcome contributions, especially regarding heuristic AI model improvements for the text analysis engine.
+TrustLayer-X is built for security. We welcome contributions, especially regarding heuristic AI model improvements for the text analysis engine.
 
 - Ensure all code conforms to the clean-code standards outlined in the repository.
 - Submit pull requests to the `integration` branch.
