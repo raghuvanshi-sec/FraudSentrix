@@ -1,7 +1,6 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import AuthLayout from "../layout/AuthLayout";
-import Landing from "../pages/Landing";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
@@ -20,7 +19,7 @@ import ModelManagement from "../components/TrustLayer/Main/ModelManagement";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing />
+    element: <Navigate to="/dashboard" replace />
   },
   {
     path: "/auth",
