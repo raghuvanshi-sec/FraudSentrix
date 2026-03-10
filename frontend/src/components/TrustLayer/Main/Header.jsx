@@ -5,8 +5,8 @@ export default function Header() {
   const tabs = [
     { name: 'Dashboard', path: '/dashboard', exact: true },
     { name: 'Text Analyzer', path: '/dashboard/scam-detection' },
-    { name: 'Vishing & Deepfake', path: '/dashboard/vishing-deepfake' },
-    { name: 'Phishing Alerts', path: '/dashboard/phishing-analyzer' },
+    { name: 'Phishing & Vishing', path: '/dashboard/phishing-vishing' },
+    { name: 'Deepfake Video', path: '/dashboard/deepfake-analyzer' },
     { name: 'Domain Check', path: '/dashboard/domain-checker' },
     { name: 'Doc Verify', path: '/dashboard/document-verification' }
   ];
