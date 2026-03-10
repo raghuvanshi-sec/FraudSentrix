@@ -2,22 +2,11 @@
 
 > **Real-Time Digital Authenticity & Scam Protection Platform.**
 
-![Status](https://img.shields.io/badge/Status-Active%20Development-emerald)
-![Security](https://img.shields.io/badge/Security-Audit%20Passed-blue)
-![Frontend](https://img.shields.io/badge/Frontend-React%20%2B%20Tailwind%20v4-61dafb)
-![Backend](https://img.shields.io/badge/Backend-Express%20%2B%20MongoDB-339933)
 
-**TrustLayer-X** is an enterprise-grade cybersecurity command center designed to detect and neutralize digital fraud. From "Digital Arrest" impersonation scams to voice-based vishing and deepfake synthetic media, TrustLayer-X provides a unified heuristic protection layer for the modern internet.
+![React Focus](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue)
+![Backend](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-green)
+![Status](https://img.shields.io/badge/Status-Active%20Development-yellow)
 
----
-
-## 🏛️ System Architecture
-
-TrustLayer-X follows a modular, three-tier architecture:
-
-1. **Frontend (React 19)**: A professional, high-impact "Tech-Brutalist" dashboard built with Tailwind CSS v4 and Recharts for live threat intelligence.
-2. **Backend (Express 5)**: A hardened Node.js API server featuring security headers (Helmet), rate limiting, and secure JWT-based authentication.
-3. **ML Engine (Python)**: A heuristic-based neural pipeline for conversational analysis, phishing detection, and domain impersonation scanning.
 
 ---
 
@@ -25,11 +14,9 @@ TrustLayer-X follows a modular, three-tier architecture:
 
 ### 1. Requirements
 
-- Node.js (v18+)
-- MongoDB (Running locally or via Atlas)
-- Python 3.10+ (for ML Engine)
+## 💡 The Solution: Trustlayer-x
 
-### 2. Installation
+**TrustLayer-X** (by CodeBlooded) is an intelligent, real-time fraud prevention system that acts as a digital guardian. By continuously analyzing communication streams—voice, video, and behavior—it detects impersonation attempts and psychological manipulation *before* it's too late.
 
 Clone the repository and install all dependencies using the root orchestrator:
 
@@ -51,10 +38,14 @@ Ensure `MONGO_URI` and `JWT_SECRET` are properly configured in `trustlayerx-back
 
 ### 4. Deployment
 
-Start both the dashboard and the secure backend simultaneously:
+Instructions for running TrustLayer-x locally will be added here once the MVP is finalized.
 
 ```bash
-npm run dev
+# General placeholder for future setup
+git clone https://github.com/your-username/TrustLayer-X.git
+
+# Install dependencies and run...
+npm run install:all
 ```
 
 ---
@@ -93,4 +84,4 @@ Built with ❤️ by **Team CodeBlooded**
 - [ ] Distributed Neural Core Implementation
 
 ---
-*© 2026 CodeBlooded Ecosystem. Institutional Grade Protection for All.*
+*Built with ❤️ for a safer internet by Team CodeBlooded.*
