@@ -1,5 +1,5 @@
 {
-  "name": "fraudsentrix",
+  "name": "trustlayerx",
   "version": "1.0.0",
   "description": "> Combatting Digital Arrest Scams with Real-Time Multimodal AI",
   "homepage": "https://github.com/raghuvanshi-sec/FraudSentrix#readme",
@@ -15,11 +15,11 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "install:all": "npm install --prefix frontend && npm install --prefix trustlayer-backend-main",
+    "install:all": "npm install --prefix frontend && npm install --prefix trustlayerx-backend",
     "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\"",
     "dev:frontend": "npm run dev --prefix frontend",
-    "dev:backend": "npm run dev --prefix trustlayer-backend-main",
-    "start": "node trustlayer-backend-main/app.js",
+    "dev:backend": "npm run dev --prefix trustlayerx-backend",
+    "start": "node trustlayerx-backend/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

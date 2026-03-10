@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import AuthLayout from "../layout/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -8,13 +8,12 @@ import TrustLayerLayout from "../layout/TrustLayerLayout";
 // Reusing the views we built:
 import ThreatOverview from "../components/TrustLayer/Main/ThreatOverview";
 import ScamDetection from "../components/TrustLayer/Main/ScamDetection";
-import PhishingEmailAnalyzer from "../components/TrustLayer/Main/PhishingEmailAnalyzer";
+import PhishingVishingAnalyzer from "../components/TrustLayer/Main/PhishingVishingAnalyzer";
+import DeepfakeAnalyzer from "../components/TrustLayer/Main/DeepfakeAnalyzer";
 import DomainImpersonationChecker from "../components/TrustLayer/Main/DomainImpersonationChecker";
 import DocumentVerification from "../components/TrustLayer/Main/DocumentVerification";
 import ThreatAnalyticsCharts from "../components/TrustLayer/Main/ThreatAnalyticsCharts";
-
-import VishingDeepfakeDetector from "../components/TrustLayer/Main/VishingDeepfakeDetector";
-
+import ModelManagement from "../components/TrustLayer/Main/ModelManagement";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +43,7 @@ const router = createBrowserRouter([
         element: (
           <div className="flex flex-col gap-6 lg:gap-8">
             <ThreatOverview />
+            <ModelManagement />
             <ThreatAnalyticsCharts />
           </div>
         )
@@ -53,12 +53,12 @@ const router = createBrowserRouter([
         element: <ScamDetection />
       },
       {
-        path: "vishing-deepfake",
-        element: <VishingDeepfakeDetector />
+        path: "phishing-vishing",
+        element: <PhishingVishingAnalyzer />
       },
       {
-        path: "phishing-analyzer",
-        element: <PhishingEmailAnalyzer />
+        path: "deepfake-analyzer",
+        element: <DeepfakeAnalyzer />
       },
       {
         path: "domain-checker",

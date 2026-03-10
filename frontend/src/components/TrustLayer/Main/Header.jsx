@@ -1,13 +1,12 @@
-import React from 'react';
 import { ShieldAlert, Bell } from 'lucide-react';
-import { NavLink } from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
   const tabs = [
     { name: 'Dashboard', path: '/dashboard', exact: true },
-    { name: 'Scam Detection', path: '/dashboard/scam-detection' },
-    { name: 'Vishing & Deepfake', path: '/dashboard/vishing-deepfake' },
-    { name: 'Phishing Alerts', path: '/dashboard/phishing-analyzer' },
+    { name: 'Text Analyzer', path: '/dashboard/scam-detection' },
+    { name: 'Phishing & Vishing', path: '/dashboard/phishing-vishing' },
+    { name: 'Deepfake Video', path: '/dashboard/deepfake-analyzer' },
     { name: 'Domain Check', path: '/dashboard/domain-checker' },
     { name: 'Doc Verify', path: '/dashboard/document-verification' }
   ];
@@ -21,7 +20,7 @@ export default function Header() {
           <div className="w-8 h-8 bg-gradient-to-br from-[#ff2a2a] to-orange-600 flex items-center justify-center">
             <ShieldAlert size={18} className="text-white" />
           </div>
-          <span className="font-syne font-bold text-xl tracking-wide text-white">TrustLayer <span className="text-slate-500 font-normal">Lite-X</span></span>
+          <span className="font-syne font-bold text-xl tracking-wide text-white">TrustLayer-X</span>
         </div>
 
         {/* Navigation Tabs (Desktop) */}

@@ -1,6 +1,5 @@
 # 🛡️ TrustLayer-X
 
-> **Combatting Digital Arrest Scams & Cyber Threats with Advanced Analytics**
 
 ![React Focus](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue)
 ![Backend](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-green)
@@ -14,18 +13,19 @@ It provides an enterprise-grade "Cyber Command Center" UI backed by a robust Nod
 
 ## ⚡ Quick Start
 
-### Prerequisites
+### 1. Requirements
 
-- [Node.js](https://nodejs.org/) (v18+)
-- [MongoDB](https://www.mongodb.com/) (running locally or via Atlas)
+## 💡 The Solution: Trustlayer-x
 
-### 1. Clone & Install
+**TrustLayer-X** (by CodeBlooded) is an intelligent, real-time fraud prevention system that acts as a digital guardian. By continuously analyzing communication streams—voice, video, and behavior—it detects impersonation attempts and psychological manipulation *before* it's too late.
 
 ```bash
 git clone https://github.com/raghuvanshi-sec/TrustLayer-X.git
 cd FraudSentrix
 
-# Install dependencies for both Frontend and Backend automatically
+```bash
+git clone https://github.com/raghuvanshi-sec/TrustLayer-x.git
+cd TrustLayer-X
 npm run install:all
 ```
 
@@ -44,71 +44,56 @@ JWT_SECRET=your_super_secret_64_character_hex_string
 From the root `Trustlayer-X` folder, start both the React frontend and Node backend simultaneously:
 
 ```bash
-npm run dev
+cp .env.example trustlayerx-backend/.env
 ```
 
-- **Frontend:** `http://localhost:5173`
-- **Backend:** `http://localhost:3000`
+Ensure `MONGO_URI` and `JWT_SECRET` are properly configured in `trustlayerx-backend/.env`.
+
+### 4. Deployment
+
+Instructions for running TrustLayer-x locally will be added here once the MVP is finalized.
+
+```bash
+# General placeholder for future setup
+git clone https://github.com/your-username/TrustLayer-X.git
+
+# Install dependencies and run...
+npm run install:all
+```
 
 ---
 
-## ✨ Core Features & Modules
+## 🧠 Threat Protection Suites
 
-### 1. The Cyber Dashboard (Frontend)
-
-A highly professional, dark-themed React SPA using Tailwind CSS v4.
-
-- **Tech-Noir Aesthetics:** Glassmorphism, dynamic scanner animations, and clear Gestalt principles.
-- **Risk Color Coding:** Green (Safe), Yellow (Suspicious), Red (High Risk).
-- **Top Navigation:** Sleek, responsive navigation bar.
-
-### 2. Threat Analysis Suites
-
-- 🎙️ **Scam Detection (Digital Arrest):** Analyzes conversational text transcripts for coercion, urgency cues, and impersonation scripts. Returns a calculated Risk Score and flags specific threat vectors.
-- 🎣 **Phishing Analyzer:** Evaluates email or message bodies for malicious intent and tracking links.
-- 🌐 **Domain Checker:** Analyzes domain reputation, identifies typosquatting, and checks TLS certificate validity.
-- 📄 **Document Verification:** Generates cryptographic SHA-256 hashes of uploaded files to detect tampering against known safe registries.
-
-### 3. Secure Backend API
-
-- 🔒 **Production-Ready Schema:** User models enforce `firstName`, `lastName`, and strict password policies.
-- 🛡️ **Data Layer Security:** Password hashing (bcrypt) is securely decoupled into Mongoose `pre('save')` hooks rather than living in the controller routes.
-- 🔑 **JWT Authentication:** Stateful token generation with role-based infrastructure.
-
----
-
-## 🏗️ Tech Stack
-
-**Frontend:**
-
-- React.js 19 (Vite)
-- Tailwind CSS v4 (Custom Dark Theme Tokens)
-- React Router v7
-- Axios for API communication
-
-**Backend:**
-
-- Node.js & Express.js 5
-- MongoDB & Mongoose
-- JSON Web Tokens (JWT) & bcryptjs
-
----
-
-## 📡 API Reference (Core)
-
-| Method | Endpoint | Description |
+| Shield | Module | Description |
 | :--- | :--- | :--- |
-| `POST` | `/api/auth/register` | Register a new user (`firstName`, `lastName`, `email`, `password`) |
-| `POST` | `/api/auth/login` | Authenticate user and receive a JWT token |
-| `POST` | `/api/scan/analyze` | Submit a text transcript for Scam/Digital Arrest threat modeling |
+| 🛡️ | **Scam Detection** | Analyzes transcripts for "Digital Arrest" coercion scripts & bank impersonation. |
+| 🎙️ | **Vishing & Deepfake** | Scans audio/video for synthetic artifacts and AI-generated social engineering. |
+| 🎣 | **Phishing Alerts** | High-precision scanning of email bodies for malicious links and credential harvesting. |
+| 🌐 | **Domain Check** | Real-time typosquatting detection and official identity verification. |
+| 📄 | **Doc Verify** | Cryptographic integrity checks for sensitive digital documents. |
 
 ---
 
-## 🤝 Contributing
+## 🔒 Security Posture
+
+TrustLayer-X is built with a "Security-First" philosophy:
+
+- **Hardened API**: Protected by `helmet` and `express-rate-limit`.
+- **Zero-Trust Auth**: Secure JWT sessions with isolated salt/hash persistence.
+- **Fail-Closed Logic**: Critical modules halt execution if security protocols are breached.
+
+---
+
+## 🤝 Roadmap & Contributing
 
 TrustLayer-X is built for security. We welcome contributions, especially regarding heuristic AI model improvements for the text analysis engine.
 
-- Ensure all code conforms to the clean-code standards outlined in the repository.
-- Submit pull requests to the `integration` branch.
+- [x] Unified Tech-Brutalist Design System
+- [x] Professional SaaS Navigation & CTA Flows
+- [x] Security Hardening & Audit Remediation
+- [ ] Real-time WebSocket Threat Feeds
+- [ ] Distributed Neural Core Implementation
 
+---
 *Built with ❤️ for a safer internet by Team CodeBlooded.*
