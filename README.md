@@ -1,12 +1,13 @@
 # 🛡️ TrustLayer-X
 
-> **Real-Time Digital Authenticity & Scam Protection Platform.**
-
 
 ![React Focus](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue)
 ![Backend](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-green)
 ![Status](https://img.shields.io/badge/Status-Active%20Development-yellow)
 
+**TrustLayer-X** is a modern, premium cybersecurity dashboard and API backend designed to protect users from sophisticated digital threats, specifically targeting "digital arrest" impersonation scams, phishing attempts, domain spoofing, and document tampering.
+
+It provides an enterprise-grade "Cyber Command Center" UI backed by a robust Node.js reporting structure.
 
 ---
 
@@ -18,7 +19,9 @@
 
 **TrustLayer-X** (by CodeBlooded) is an intelligent, real-time fraud prevention system that acts as a digital guardian. By continuously analyzing communication streams—voice, video, and behavior—it detects impersonation attempts and psychological manipulation *before* it's too late.
 
-Clone the repository and install all dependencies using the root orchestrator:
+```bash
+git clone https://github.com/raghuvanshi-sec/TrustLayer-X.git
+cd FraudSentrix
 
 ```bash
 git clone https://github.com/raghuvanshi-sec/TrustLayer-x.git
@@ -26,9 +29,19 @@ cd TrustLayer-X
 npm run install:all
 ```
 
-### 3. Environment Setup
+### 2. Environment Variables
 
-Copy the configuration template and update your credentials:
+Create a `.env` file in the `trustlayer-backend-main` directory:
+
+```env
+PORT=3000
+MONGO_URI=mongodb://127.0.0.1:27017/trustlayer-x
+JWT_SECRET=your_super_secret_64_character_hex_string
+```
+
+### 3. Run the Development Servers
+
+From the root `Trustlayer-X` folder, start both the React frontend and Node backend simultaneously:
 
 ```bash
 cp .env.example trustlayerx-backend/.env
@@ -74,8 +87,7 @@ TrustLayer-X is built with a "Security-First" philosophy:
 
 ## 🤝 Roadmap & Contributing
 
-Built with ❤️ by **Team CodeBlooded**
-.
+TrustLayer-X is built for security. We welcome contributions, especially regarding heuristic AI model improvements for the text analysis engine.
 
 - [x] Unified Tech-Brutalist Design System
 - [x] Professional SaaS Navigation & CTA Flows
